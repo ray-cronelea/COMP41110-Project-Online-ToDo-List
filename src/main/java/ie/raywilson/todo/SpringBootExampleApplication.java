@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.appengine.demos.springboot;
+package ie.raywilson.todo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

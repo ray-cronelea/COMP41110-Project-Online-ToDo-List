@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.appengine.demos.springboot;
+package ie.raywilson.todo;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -3,15 +3,13 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.google.appengine.demos</groupId>
-  <artifactId>springboot-appengine-standard</artifactId>
+  <groupId>ie.raywilson.todo</groupId>
+  <artifactId>cloud-todo</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
 
-  <name>springboot-appengine-standard</name>
-  <description>Demo project for Spring Boot</description>
-
-
+  <name>cloud-todo</name>
+  <description>Cloud based todo project for COMP41110</description>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

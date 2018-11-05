@@ -26,3 +26,8 @@ To run locally:
 
 To deploy to app engine:
 `mvn appengine:deploy`
+
+
+## References
+Base application found:
+https://github.com/GoogleCloudPlatform/getting-started-java/blob/master/appengine-standard-java8/springboot-appengine-standard/README.md
