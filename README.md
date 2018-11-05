@@ -7,5 +7,22 @@ Online Todo list which allows users to perform the following operations:
 * d. Time slots booking
 * e. Share tasks or the whole list
 
-Using a google storage backend
+# Setup of google cloud
+`gcloud init`
 
+To create Project:
+`gcloud app create`
+
+Set up maven wrapper if jar can't be found
+`mvn -N io.takari:maven:wrapper`
+`./mvnw clean install`
+
+./mvnw uses the maven wrapper
+mvn uses the system version of maven
+
+# Running application
+To run locally:
+`mvn appengine:run`
+
+To deploy to app engine:
+`mvn appengine:deploy`
