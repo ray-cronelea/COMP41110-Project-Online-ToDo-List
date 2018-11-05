@@ -6,3 +6,6 @@ b. Edit or delete existing tasks
 c. Search for tasks
 d. Time slots booking
 e. Share tasks or the whole list
+
+Using a google storage backend
+
