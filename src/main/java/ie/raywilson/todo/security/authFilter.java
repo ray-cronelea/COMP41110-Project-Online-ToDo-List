@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
-@WebFilter(filterName = "TimeOfDayFilter", urlPatterns = {"/todo/*","app.html"})
+@WebFilter(filterName = "TimeOfDayFilter", urlPatterns = {"/todo/*","/app"})
 public class authFilter implements Filter {
 
 	@Override
@@ -38,12 +38,16 @@ public class authFilter implements Filter {
 		} else {
 			System.out.println("Sending user to login page!");
 
+			resp.sendRedirect("/");
+
+			/*
 			//resp.sendRedirect(userService.createLoginURL(thisUrl));
 			resp.setContentType("text/html");
 			resp.getWriter().println(
 					"<p>Please <a href=\""
 							+ userService.createLoginURL(thisUrl)
 							+ "\">sign in</a>.</p>");
+			*/
 		}
 
 	}

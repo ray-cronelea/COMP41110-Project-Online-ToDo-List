@@ -1,4 +1,4 @@
-package ie.raywilson.todo.data;
+package ie.raywilson.todo.model;
 
 import com.googlecode.objectify.Key;
 import com.googlecode.objectify.annotation.Entity;

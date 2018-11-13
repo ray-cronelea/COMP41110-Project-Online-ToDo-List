@@ -1,4 +1,4 @@
-package ie.raywilson.todo;
+package ie.raywilson.todo.config;
 
 import com.google.appengine.api.utils.SystemProperty;
 import com.google.cloud.datastore.DatastoreOptions;
@@ -9,9 +9,9 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
-import ie.raywilson.todo.data.Item;
-import ie.raywilson.todo.data.TodoList;
-import ie.raywilson.todo.data.User;
+import ie.raywilson.todo.model.Item;
+import ie.raywilson.todo.model.TodoList;
+import ie.raywilson.todo.model.User;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
 import org.springframework.context.annotation.Bean;

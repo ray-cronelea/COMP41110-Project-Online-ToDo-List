@@ -1,5 +1,6 @@
-package ie.raywilson.todo;
+package ie.raywilson.todo.config;
 
+import ie.raywilson.todo.TodoApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
