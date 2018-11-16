@@ -37,17 +37,7 @@ public class authFilter implements Filter {
 			filterChain.doFilter(req, resp);
 		} else {
 			System.out.println("Sending user to login page!");
-
 			resp.sendRedirect("/");
-
-			/*
-			//resp.sendRedirect(userService.createLoginURL(thisUrl));
-			resp.setContentType("text/html");
-			resp.getWriter().println(
-					"<p>Please <a href=\""
-							+ userService.createLoginURL(thisUrl)
-							+ "\">sign in</a>.</p>");
-			*/
 		}
 
 	}

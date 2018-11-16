@@ -1,16 +1,23 @@
-<!DOCTYPE html>
+<!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Title</title>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="Ray Wilson" content="">
+    <link rel="icon" href="./images/favicon.ico">
 
-</head>
-<body>
-<h1>LOGIN SCREEN TO BE ADDED HERE</h1>
-<p>Need to add login button linked to app.html that will trigger google account login if user has not allready logged in</p>
-<p>Needs to generate login link if user is not allready logged in</p>
+    <title>Cloud Todo List</title>
 
-<p>Please <a th:href="@{${loginURL}}">Sign In</a></p>
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/signin.css" rel="stylesheet">
+  </head>
 
-</body>
+  <body class="text-center">
+    <form class="form-signin">
+      <img class="mb-4" src="./images/sharp-assignment-24px.svg" alt="" width="72" height="72">
+      <h1 class="h3 mb-3 font-weight-normal">COMP41110 Cloud Todo List</h1>
+      <a th:href="@{${loginURL}}"><img src='./images/btn_google_normal.png' width="191" height="46" onmouseover="this.src='./images/btn_google_focus.png';" onmouseout="this.src='./images/btn_google_normal.png';"/></a>
+    </form>
+  </body>
 </html>
