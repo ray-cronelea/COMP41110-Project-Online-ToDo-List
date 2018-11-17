@@ -9,9 +9,9 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
-import ie.raywilson.todo.model.Item;
+import ie.raywilson.todo.model.TodoListItem;
+import ie.raywilson.todo.model.Account;
 import ie.raywilson.todo.model.TodoList;
-import ie.raywilson.todo.model.User;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -66,9 +66,9 @@ public class ObjectifyConfig {
 				));
 			}
 
-			ObjectifyService.register(Item.class);
+			ObjectifyService.register(TodoListItem.class);
 			ObjectifyService.register(TodoList.class);
-			ObjectifyService.register(User.class);
+			ObjectifyService.register(Account.class);
 
 		}
 

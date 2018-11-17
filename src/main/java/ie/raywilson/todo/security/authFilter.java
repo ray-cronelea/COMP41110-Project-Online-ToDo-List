@@ -26,7 +26,7 @@ public class authFilter implements Filter {
 
 		System.out.println("Authentication filter has been triggered, URL: " + url + ", URI: " + uri);
 
-		// Google User API userService
+		// Google Account API userService
 		UserService userService = UserServiceFactory.getUserService();
 		String thisUrl = req.getRequestURI();
 

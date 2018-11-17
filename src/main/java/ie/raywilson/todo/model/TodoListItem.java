@@ -4,17 +4,18 @@ import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 
 @Entity
-public class Item {
-	@Id String name;
+public class TodoListItem {
+	@Id Long id;
+	String name;
 	String description;
 
-	private Item() {}
+	private TodoListItem() {
+		this.name = null;
+		this.description = null;
+	}
 
-	public Item(String name, String description){
+	public TodoListItem(String name, String description){
 		this.name = name;
 		this.description = description;
 	}
-
-	// TODO: Add put and get functions
-
 }
