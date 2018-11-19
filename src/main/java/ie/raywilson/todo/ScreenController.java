@@ -20,6 +20,9 @@ public class ScreenController {
 		UserService userService = UserServiceFactory.getUserService();
 		String loginURL = userService.createLoginURL("/app");
 
+		//String jsVars =
+		//model.addAttribute("jsVars", jsVars);
+
 		model.addAttribute("loginURL", loginURL);
 		return "login";
 	}

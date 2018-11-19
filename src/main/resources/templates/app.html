@@ -1,19 +1,18 @@
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>App</title>
+    <meta http-equiv="charset=UTF-8" />
+    <title>COMP41110 Cloud Todo List</title>
+    <link rel="stylesheet" href="css/app.css" />
 </head>
-<body>
-<h1>MAIN TODO LIST APPLICATION HERE</h1>
-<p><a th:href="@{${logoutURL}}">Logout</a></p>
+    <body>
 
+        <div id="root"></div>
 
+        <script th:inline="javascript">
+            let LOGOUT_URL = /*[[${logoutURL}]]*/ 'NA';
+        </script>
+        <script src="js/bundle.js"></script>
 
-
-
-
-<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
-<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
-<script src="/components/todolist.js"></script>
-</body>
+    </body>
 </html>

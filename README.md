@@ -20,6 +20,9 @@ Set up maven wrapper if jar can't be found
 ./mvnw uses the maven wrapper
 mvn uses the system version of maven
 
+# To build frontend
+mvn clean install
+
 # Running application
 
 To run locally, first run datastore emulator and then application locally:

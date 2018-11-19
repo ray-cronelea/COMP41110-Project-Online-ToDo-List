@@ -8,6 +8,9 @@ import ie.raywilson.todo.model.TodoList;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import com.google.common.collect.Lists;
+
+import java.util.List;
 
 import static com.googlecode.objectify.ObjectifyService.ofy;
 
@@ -15,20 +18,22 @@ import static com.googlecode.objectify.ObjectifyService.ofy;
 @RequestMapping("/api")
 public class TodoListController {
 
-	@GetMapping("/todolists")
-	public String todoListsGet(){
+	@GetMapping(value = "/todolists", produces = "application/json")
+	public List<TodoList> todoListsGet(){
 
 		User currentUser = UserServiceFactory.getUserService().getCurrentUser();
 		Account currentAccount = ofy().load().type(Account.class).filter("userId", currentUser.getUserId()).first().now();
 		Iterable<TodoList> todoLists = ofy().load().type(TodoList.class).filter("accountKeys", currentAccount);
 
+		/*
 		String values = "<ul>";
 		for(TodoList tdl : todoLists){
 			values = values + "<li>" + "Name:" + tdl.getName() + ", Desc:" + tdl.getDescription() + ", ID:" + tdl.getId() + "</li>" + System.lineSeparator();
 		}
 		values = values + "</ul>";
+		*/
 
-		return values;
+		return Lists.newArrayList(todoLists);
 	}
 
 	@GetMapping("/todolists/{id}")

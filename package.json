@@ -1,0 +1,27 @@
+{
+  "name": "comp41110-cloud-todo",
+  "version": "0.1.0",
+  "description": "COMP41110 Cloud Todo",
+  "repository": "gitlab:https://git.cronelea.ie/ray/COMP41110-Project-Online-ToDo-List",
+  "author": "Ray Wilson",
+  "license": "Apache-2.0",
+  "homepage": "https://todo.raywilson.ie",
+  "dependencies": {
+    "@material-ui/core": "^3.5.1",
+    "@material-ui/icons": "^3.0.1",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "rest": "^1.3.1"
+  },
+  "scripts": {
+    "watch": "webpack --watch -d"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.2",
+    "webpack": "^4.19.1",
+    "webpack-cli": "^3.1.0"
+  }
+}
