@@ -18,6 +18,7 @@ import red from '@material-ui/core/colors/red';
 import blue from '@material-ui/core/colors/blue';
 import SvgIcon from '@material-ui/core/SvgIcon';
 import TodoLists from './todoLists';
+import SelectedTodoList from './selectedTodoList';
 
 import ButtonLogout from './buttonLogout';
 
@@ -64,11 +65,23 @@ class ClippedDrawer extends React.Component{
         super(props);
         this.state = {
             error: null,
+            selectedId: -1,
         };
+        this.updateCurrentTodo = this.updateCurrentTodo.bind(this);
+    }
+
+    updateCurrentTodo(dataFromChild){
+        console.log(dataFromChild);
+
+        this.setState({selectedId:dataFromChild}, () => {
+            console.log(this.state);
+        });
+
     }
 
     render() {
         const { classes } = this.props;
+
         return (
             <div className={classes.root}>
                 <MuiThemeProvider theme={theme}>
@@ -100,7 +113,7 @@ class ClippedDrawer extends React.Component{
                     >
                         <div className={classes.toolbar} />
 
-                        <TodoLists></TodoLists>
+                        <TodoLists callbackFromParent={this.updateCurrentTodo}></TodoLists>
 
                         <Divider />
                         <List>
@@ -115,18 +128,7 @@ class ClippedDrawer extends React.Component{
                     {/* MAIN SECTION START */}
                     <main className={classes.content}>
                         <div className={classes.toolbar} />
-                        <Typography paragraph>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum
-                            facilisis leo vel. Risus at ultrices mi tempus imperdiet. Semper risus in hendrerit
-                            gravida rutrum quisque non tellus. Convallis convallis tellus id interdum velit laoreet id
-                            donec ultrices. Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
-                            adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra nibh cras.
-                            Metus vulputate eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo quis
-                            imperdiet massa tincidunt. Cras tincidunt lobortis feugiat vivamus at augue. At augue eget
-                            arcu dictum varius duis at consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem
-                            donec massa sapien faucibus et molestie ac.
-                        </Typography>
+                        <SelectedTodoList selectedId={this.state.selectedId}/>
                     </main>
                     {/* MAIN SECTION END */}
 

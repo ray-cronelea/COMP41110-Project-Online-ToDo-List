@@ -9,7 +9,6 @@ class TodoLists extends React.Component {
         this.state = {
             error: null,
             isLoaded: false,
-            items: []
         };
     }
 
@@ -37,10 +36,6 @@ class TodoLists extends React.Component {
             )
     }
 
-    updateSelectedList(id){
-        this.props.callbackFromParent(id);
-    }
-
     render() {
         const { error, isLoaded, items } = this.state;
         if (error) {
@@ -49,14 +44,7 @@ class TodoLists extends React.Component {
             return <div>Loading...</div>;
         } else {
             return (
-
-                <List>
-                    {items.map(item => (
-                    <ListItem button key={item.id} value={item.id} onClick={() => this.updateSelectedList(item.id)}>
-                        <ListItemText primary={item.name} />
-                    </ListItem>
-                    ))}
-                </List>
+                <p>{this.props.selectedId}</p>
             );
         }
     }
