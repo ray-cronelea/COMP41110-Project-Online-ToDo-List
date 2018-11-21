@@ -7,19 +7,14 @@ import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import AddIcon from '@material-ui/icons/AddCircle';
 import red from '@material-ui/core/colors/red';
 import blue from '@material-ui/core/colors/blue';
 import SvgIcon from '@material-ui/core/SvgIcon';
-import TodoLists from './todoLists';
-import SelectedTodoList from './selectedTodoList';
-
+import TodoListsList from './todoListsList';
+import TodoListsMainContainer from './todoListsMainContainer';
+import TodoListsAddButton from './todoListsAddButton'
 import ButtonLogout from './buttonLogout';
 
 const styles = theme => ({
@@ -66,8 +61,10 @@ class ClippedDrawer extends React.Component{
         this.state = {
             error: null,
             selectedId: -1,
+            reloadList: false,
         };
         this.updateCurrentTodo = this.updateCurrentTodo.bind(this);
+        this.setReload = this.setReload.bind(this);
     }
 
     updateCurrentTodo(dataFromChild){
@@ -76,12 +73,16 @@ class ClippedDrawer extends React.Component{
         this.setState({selectedId:dataFromChild}, () => {
             console.log(this.state);
         });
+    }
 
+    setReload(val){
+        this.setState({reloadList:val}, () => {
+            console.log("Reload list set");
+        });
     }
 
     render() {
         const { classes } = this.props;
-
         return (
             <div className={classes.root}>
                 <MuiThemeProvider theme={theme}>
@@ -113,22 +114,17 @@ class ClippedDrawer extends React.Component{
                     >
                         <div className={classes.toolbar} />
 
-                        <TodoLists callbackFromParent={this.updateCurrentTodo}></TodoLists>
-
+                        <TodoListsList selectedId={this.state.selectedId} setReload={this.setReload} reloadList={this.state.reloadList} updateCurrentTodo={this.updateCurrentTodo}></TodoListsList>
                         <Divider />
-                        <List>
-                            <ListItem button>
-                                <ListItemIcon><AddIcon/></ListItemIcon>
-                                <ListItemText>Add</ListItemText>
-                            </ListItem>
-                        </List>
+                        <TodoListsAddButton selectedId={this.state.selectedId} setReload={this.setReload} reloadList={this.state.reloadList} updateCurrentTodo={this.updateCurrentTodo}></TodoListsAddButton>
+
                     </Drawer>
                     {/* DRAWER SECTION END */}
 
                     {/* MAIN SECTION START */}
                     <main className={classes.content}>
                         <div className={classes.toolbar} />
-                        <SelectedTodoList selectedId={this.state.selectedId}/>
+                        <TodoListsMainContainer selectedId={this.state.selectedId} setReload={this.setReload} updateCurrentTodo={this.updateCurrentTodo}/>
                     </main>
                     {/* MAIN SECTION END */}
 
@@ -136,7 +132,6 @@ class ClippedDrawer extends React.Component{
             </div>
         );
     }
-
 }
 
 ClippedDrawer.propTypes = {

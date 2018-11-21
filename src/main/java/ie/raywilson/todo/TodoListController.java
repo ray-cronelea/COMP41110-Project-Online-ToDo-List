@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.google.common.collect.Lists;
+import sun.security.provider.certpath.OCSPResponse;
 
 import java.util.List;
 
@@ -36,17 +37,17 @@ public class TodoListController {
 		return Lists.newArrayList(todoLists);
 	}
 
-	@GetMapping("/todolists/{id}")
-	public String todoListsGet(@PathVariable String id){
+	@GetMapping(value = "/todolists/{id}", produces = "application/json")
+	public TodoList todoListsGet(@PathVariable String id){
 
 		TodoList tdl = ofy().load().type(TodoList.class).id(Long.parseLong(id)).now();
-		String list = "Name: " + tdl.getName() + ", Desc: " + tdl.getDescription() + ", ID:" + tdl.getId();
-
-		return list;
+		return tdl;
 	}
 
 	@PostMapping(path = "/todolists")
 	public ResponseEntity todoListsPost(@ModelAttribute("todolist") TodoList todoList){
+
+		System.out.println("Post Mapping, " + todoList.getName() + ", " + todoList.getDescription());
 
 		User currentUser = UserServiceFactory.getUserService().getCurrentUser();
 		Account currentAccount = ofy().load().type(Account.class).filter("userId", currentUser.getUserId()).first().now();
@@ -69,12 +70,13 @@ public class TodoListController {
 	}
 
 	@DeleteMapping(path = "/todolists/{id}")
-	public String todoListsDelete(@PathVariable String id){
+	public ResponseEntity todoListsDelete(@PathVariable String id){
 
+		System.out.println("Todolist Delete, id:" + id);
 		TodoList deleteTodoList = ofy().load().type(TodoList.class).id(Long.parseLong(id)).now();
 		ofy().delete().entity(deleteTodoList).now();
 
-		return "Deleted " + id;
+		return new ResponseEntity(HttpStatus.NO_CONTENT);
 	}
 
 }

@@ -2,17 +2,27 @@ import React from 'react';
 import List from "@material-ui/core/List/List";
 import ListItem from "@material-ui/core/ListItem/ListItem";
 import ListItemText from "@material-ui/core/ListItemText/ListItemText";
+import {withStyles} from "@material-ui/core";
 
-class TodoLists extends React.Component {
+const styles = theme => ({
+    selected: {
+        backgroundColor: theme.palette.background.paper,
+    },
+    notselected: {
+    }
+});
+
+class TodoListsList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             error: null,
             isLoaded: false,
+            items: []
         };
     }
 
-    componentDidMount() {
+    updateItems(){
         fetch("./api/todolists")
             .then(res => res.json())
             .then(
@@ -34,6 +44,21 @@ class TodoLists extends React.Component {
                     });
                 }
             )
+        this.props.setReload(false);
+    }
+
+    componentDidMount() {
+        this.updateItems();
+    }
+
+    componentDidUpdate(prevProps, prevState){
+        if (prevProps.reloadList !== this.props.reloadList) {
+            this.updateItems();
+        }
+    }
+
+    updateSelectedList(id){
+        this.props.updateCurrentTodo(id);
     }
 
     render() {
@@ -44,10 +69,16 @@ class TodoLists extends React.Component {
             return <div>Loading...</div>;
         } else {
             return (
-                <p>{this.props.selectedId}</p>
+                <List>
+                    {items.map(item => (
+                    <ListItem selected={this.props.selectedId === item.id} button key={item.id} value={item.id} onClick={() => this.updateSelectedList(item.id)}>
+                        <ListItemText primary={item.name} />
+                    </ListItem>
+                    ))}
+                </List>
             );
         }
     }
 }
 
-export default TodoLists;
+export default withStyles(styles)(TodoListsList);
