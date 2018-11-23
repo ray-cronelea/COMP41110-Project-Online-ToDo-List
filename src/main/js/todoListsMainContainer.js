@@ -1,15 +1,21 @@
 import React from 'react';
 import TodoListsMainSelectedListDisplay from './todoListsMainSelectedListDisplay'
+import TodoListsMainListItems from './todoListsMainListItems'
 
 
 class TodoLists extends React.Component {
     constructor(props) {
         super(props);
+        this.callbackUpdateCurrentTodoList = this.callbackUpdateCurrentTodoList.bind(this);
         this.state = {
             error: null,
             isLoaded: false,
             currentTodoList: null,
         };
+    }
+
+    callbackUpdateCurrentTodoList(todoList){
+        this.setState({currentTodoList: todoList});
     }
 
     componentDidUpdate(prevProps, prevState){
@@ -50,7 +56,8 @@ class TodoLists extends React.Component {
         } else {
             return (
                 <div>
-                    <TodoListsMainSelectedListDisplay selectedTodoList={currentTodoList} updateCurrentTodo={this.props.updateCurrentTodo}></TodoListsMainSelectedListDisplay>
+                    <TodoListsMainSelectedListDisplay setReload={this.props.setReload} callbackUpdateCurrentTodoList={this.callbackUpdateCurrentTodoList} selectedTodoList={currentTodoList} updateCurrentTodo={this.props.updateCurrentTodo}/>
+                    <TodoListsMainListItems selectedTodoList={currentTodoList}/>
                 </div>
             );
         }

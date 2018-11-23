@@ -5,6 +5,12 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import DialogTitle from "@material-ui/core/DialogTitle/DialogTitle";
+import DialogContent from "@material-ui/core/DialogContent/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText/DialogContentText";
+import TextField from "@material-ui/core/TextField/TextField";
+import DialogActions from "@material-ui/core/DialogActions/DialogActions";
+import Dialog from "@material-ui/core/Dialog/Dialog";
 
 const styles = {
     card: {
@@ -27,8 +33,65 @@ class TodoListsMainSelectedListDisplay extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            open: false,
             response: null,
+            name: this.props.selectedTodoList.name,
+            description: this.props.selectedTodoList.description
         };
+    }
+
+    handleClickOpen = () => {
+        this.setState({
+            open: true
+        });
+        this.setState({name: this.props.selectedTodoList.name});
+        this.setState({description: this.props.selectedTodoList.description});
+    };
+
+    handleAddClose = () => {
+        this.setState({
+            open: false
+        });
+    };
+
+    handleUpdate = () => {
+        console.log("handleCreate, " + this.state.name + ", " + this.state.description);
+
+        let name = this.state.name;
+        let description = this.state.description;
+
+        let formData = new FormData();
+        formData.append('name', name);
+        formData.append('description', description);
+
+        fetch("/api/todolists/" + this.props.selectedTodoList.id,
+            {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                this.handleAddClose();
+                this.props.callbackUpdateCurrentTodoList(data);
+                this.props.updateCurrentTodo(data.id);
+                this.props.setReload(true);
+            })
+    }
+
+    onNameInputChange = (event) => {
+        if (event.target.value) {
+            this.setState({name: event.target.value})
+        } else {
+            this.setState({name: ''})
+        }
+    }
+
+    onDescriptionInputChange = (event) => {
+        if (event.target.value) {
+            this.setState({description: event.target.value})
+        } else {
+            this.setState({description: ''})
+        }
     }
 
     deleteItem(id) {
@@ -41,6 +104,22 @@ class TodoListsMainSelectedListDisplay extends React.Component {
 
     deleteFinished(res){
         this.props.updateCurrentTodo(null);
+    }
+
+    onNameInputChange = (event) => {
+        if (event.target.value) {
+            this.setState({name: event.target.value})
+        } else {
+            this.setState({name: ''})
+        }
+    }
+
+    onDescriptionInputChange = (event) => {
+        if (event.target.value) {
+            this.setState({description: event.target.value})
+        } else {
+            this.setState({description: ''})
+        }
     }
 
     render() {
@@ -59,8 +138,40 @@ class TodoListsMainSelectedListDisplay extends React.Component {
                         </Typography>
                     </CardContent>
                     <CardActions>
-                        <Button size="small">Edit</Button>
+                        <Button size="small" >Add Task</Button>
+                        <Button size="small" >Share</Button>
+                        <Button size="small" onClick={this.handleClickOpen}>Edit</Button>
                         <Button size="small" onClick={() => this.deleteItem(this.props.selectedTodoList.id)}>Delete</Button>
+                        <Dialog open={this.state.open} onClose={this.handleAddClose} aria-labelledby="form-dialog-title" >
+                            <DialogTitle id="form-dialog-title">Update Todo List</DialogTitle>
+                            <DialogContent>
+                                <DialogContentText>
+                                    Enter the name and description to update this todo list.
+                                </DialogContentText>
+                                <TextField
+                                    margin="dense"
+                                    id="name"
+                                    value={this.state.name}
+                                    onChange={this.onNameInputChange}
+                                    label="Name"
+                                    type="text"
+                                    fullWidth
+                                />
+                                <TextField
+                                    margin="dense"
+                                    id="description"
+                                    value={this.state.description}
+                                    onChange={this.onDescriptionInputChange}
+                                    label="Description"
+                                    type="text"
+                                    fullWidth
+                                />
+                            </DialogContent>
+                            <DialogActions>
+                                <Button onClick={this.handleAddClose} color="primary">Cancel</Button>
+                                <Button onClick={() => this.handleUpdate()} color="primary">Update</Button>
+                            </DialogActions>
+                    </Dialog>
                     </CardActions>
                 </Card>
             );
@@ -68,4 +179,4 @@ class TodoListsMainSelectedListDisplay extends React.Component {
     }
 }
 
-export default  withStyles(styles)(TodoListsMainSelectedListDisplay);
+export default withStyles(styles)(TodoListsMainSelectedListDisplay);

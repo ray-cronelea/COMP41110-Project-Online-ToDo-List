@@ -15,7 +15,6 @@ public class TodoList {
 	String name; // Can be Long, long, or String
 	String description;
 	@Index List<Key<Account>> accountKeys = new ArrayList<Key<Account>>();
-	//List<Key<TodoListItem>> itemKeys = new ArrayList<Key<TodoListItem>>();
 
 	public TodoList(){
 	}
@@ -45,16 +44,5 @@ public class TodoList {
 		Predicate<Key<Account>> userKeyPredicate = p-> p.getId() == accountKey.getId();
 		accountKeys.removeIf(userKeyPredicate);
 	}
-
-	/*
-	public void addItem(Key<TodoListItem> itemKey){
-		itemKeys.add(itemKey);
-	}
-
-	public void removeItem(Key<TodoListItem> itemKey){
-		Predicate<Key<TodoListItem>> itemKeyPredicate = p-> p.getId() == itemKey.getId();
-		itemKeys.removeIf(itemKeyPredicate);
-	}
-	*/
 
 }

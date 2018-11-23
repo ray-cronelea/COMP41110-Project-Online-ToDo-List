@@ -16,6 +16,7 @@ import TodoListsList from './todoListsList';
 import TodoListsMainContainer from './todoListsMainContainer';
 import TodoListsAddButton from './todoListsAddButton'
 import ButtonLogout from './buttonLogout';
+import Button from "@material-ui/core/Button/Button";
 
 const styles = theme => ({
     root: {
@@ -68,10 +69,10 @@ class ClippedDrawer extends React.Component{
     }
 
     updateCurrentTodo(dataFromChild){
-        console.log(dataFromChild);
+        {/* console.log(dataFromChild); */}
 
         this.setState({selectedId:dataFromChild}, () => {
-            console.log(this.state);
+            {/*console.log(this.state);*/}
         });
     }
 
@@ -94,12 +95,9 @@ class ClippedDrawer extends React.Component{
                             <SvgIcon className={classes.iconSvg}>
                                 <path d="M21 3h-6.18C14.4 1.84 13.3 1 12 1s-2.4.84-2.82 2H3v18h18V3zm-9 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
                             </SvgIcon>
-                            <Typography variant="h6" color="inherit" noWrap style={{ flex: 1 }}>
-                                COMP41110 Cloud Todo List
-                            </Typography>
-                            <div>
-                                <ButtonLogout/>
-                            </div>
+                            <Typography variant="h6" color="inherit" noWrap style={{ flex: 1 }}>COMP41110 Cloud Todo List</Typography>
+                            <div><Button variant="outlined" href="/app/search" color="inherit">Search</Button></div>
+                            <div><ButtonLogout/></div>
                         </Toolbar>
                     </AppBar>
                     {/* APP BAR SECTION END */}

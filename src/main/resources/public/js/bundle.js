@@ -69382,6 +69382,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _todoListsMainContainer__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./todoListsMainContainer */ "./src/main/js/todoListsMainContainer.js");
 /* harmony import */ var _todoListsAddButton__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./todoListsAddButton */ "./src/main/js/todoListsAddButton.js");
 /* harmony import */ var _buttonLogout__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./buttonLogout */ "./src/main/js/buttonLogout.js");
+/* harmony import */ var _material_ui_core_Button_Button__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @material-ui/core/Button/Button */ "./node_modules/@material-ui/core/Button/Button.js");
+/* harmony import */ var _material_ui_core_Button_Button__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Button_Button__WEBPACK_IMPORTED_MODULE_17__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -69399,6 +69401,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
 
 
 
@@ -69481,13 +69484,15 @@ function (_React$Component) {
   _createClass(ClippedDrawer, [{
     key: "updateCurrentTodo",
     value: function updateCurrentTodo(dataFromChild) {
-      var _this2 = this;
-
-      console.log(dataFromChild);
+      {
+        /* console.log(dataFromChild); */
+      }
       this.setState({
         selectedId: dataFromChild
       }, function () {
-        console.log(_this2.state);
+        {
+          /*console.log(this.state);*/
+        }
       });
     }
   }, {
@@ -69521,7 +69526,11 @@ function (_React$Component) {
         style: {
           flex: 1
         }
-      }, "COMP41110 Cloud Todo List"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_buttonLogout__WEBPACK_IMPORTED_MODULE_16__["default"], null)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Drawer__WEBPACK_IMPORTED_MODULE_4___default.a, {
+      }, "COMP41110 Cloud Todo List"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button_Button__WEBPACK_IMPORTED_MODULE_17___default.a, {
+        variant: "outlined",
+        href: "/app/search",
+        color: "inherit"
+      }, "Search")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_buttonLogout__WEBPACK_IMPORTED_MODULE_16__["default"], null)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Drawer__WEBPACK_IMPORTED_MODULE_4___default.a, {
         className: classes.drawer,
         variant: "permanent",
         classes: {
@@ -69642,9 +69651,42 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(TodoListsAddButton).call(this, props));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onNameInputChange", function (event) {
-      console.log("Name changed ..." + event.target.value);
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleClickOpen", function () {
+      _this.setState({
+        open: true
+      });
+    });
 
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleClose", function () {
+      console.log("handleClose");
+
+      _this.setState({
+        open: false
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleCreate", function () {
+      console.log("handleCreate, " + _this.state.name + ", " + _this.state.description);
+      var name = _this.state.name;
+      var description = _this.state.description;
+      var formData = new FormData();
+      formData.append('name', name);
+      formData.append('description', description);
+      fetch("/api/todolists", {
+        method: "POST",
+        body: formData
+      }).then(function (response) {
+        return response.json();
+      }).then(function (data) {
+        _this.props.updateCurrentTodo(data.id);
+
+        _this.props.setReload(true);
+
+        _this.handleClose();
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onNameInputChange", function (event) {
       if (event.target.value) {
         _this.setState({
           name: event.target.value
@@ -69657,8 +69699,6 @@ function (_React$Component) {
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onDescriptionInputChange", function (event) {
-      console.log("Description changed ..." + event.target.value);
-
       if (event.target.value) {
         _this.setState({
           description: event.target.value
@@ -69670,9 +69710,6 @@ function (_React$Component) {
       }
     });
 
-    _this.handleClickOpen = _this.handleClickOpen.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    _this.handleClose = _this.handleClose.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    _this.handleCreate = _this.handleCreate.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     self = _assertThisInitialized(_assertThisInitialized(_this));
     _this.state = {
       open: false,
@@ -69683,40 +69720,6 @@ function (_React$Component) {
   }
 
   _createClass(TodoListsAddButton, [{
-    key: "handleClickOpen",
-    value: function handleClickOpen() {
-      this.setState({
-        open: true
-      });
-    }
-  }, {
-    key: "handleClose",
-    value: function handleClose() {
-      this.setState({
-        open: false
-      });
-    }
-  }, {
-    key: "handleCreate",
-    value: function handleCreate() {
-      console.log("handleCreate, " + this.state.name + ", " + this.state.description);
-      var name = this.state.name;
-      var description = this.state.description;
-      var formData = new FormData();
-      formData.append('name', name);
-      formData.append('description', description);
-      fetch("/api/todolists", {
-        method: "POST",
-        body: formData
-      }).then(function (res) {
-        return res.json();
-      }).then(function (data) {
-        self.props.updateCurrentTodo(data.id);
-        self.props.setReload(true);
-        self.handleClose();
-      });
-    }
-  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
@@ -69724,7 +69727,7 @@ function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_List_List__WEBPACK_IMPORTED_MODULE_12___default.a, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_ListItem_ListItem__WEBPACK_IMPORTED_MODULE_8___default.a, {
         button: true,
         onClick: this.handleClickOpen
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_ListItemIcon_ListItemIcon__WEBPACK_IMPORTED_MODULE_9___default.a, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_icons_AddCircle__WEBPACK_IMPORTED_MODULE_10___default.a, null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_ListItemText_ListItemText__WEBPACK_IMPORTED_MODULE_11___default.a, null, "Add")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Dialog__WEBPACK_IMPORTED_MODULE_3___default.a, {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_ListItemIcon_ListItemIcon__WEBPACK_IMPORTED_MODULE_9___default.a, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_icons_AddCircle__WEBPACK_IMPORTED_MODULE_10___default.a, null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_ListItemText_ListItemText__WEBPACK_IMPORTED_MODULE_11___default.a, null, "Add List")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Dialog__WEBPACK_IMPORTED_MODULE_3___default.a, {
         open: this.state.open,
         onClose: this.handleClose,
         "aria-labelledby": "form-dialog-title"
@@ -69927,6 +69930,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _todoListsMainSelectedListDisplay__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./todoListsMainSelectedListDisplay */ "./src/main/js/todoListsMainSelectedListDisplay.js");
+/* harmony import */ var _todoListsMainListItems__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./todoListsMainListItems */ "./src/main/js/todoListsMainListItems.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_3__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -69937,13 +69943,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+
 
 
 
@@ -69959,6 +69967,7 @@ function (_React$Component) {
     _classCallCheck(this, TodoLists);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(TodoLists).call(this, props));
+    _this.callbackUpdateCurrentTodoList = _this.callbackUpdateCurrentTodoList.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.state = {
       error: null,
       isLoaded: false,
@@ -69968,6 +69977,13 @@ function (_React$Component) {
   }
 
   _createClass(TodoLists, [{
+    key: "callbackUpdateCurrentTodoList",
+    value: function callbackUpdateCurrentTodoList(todoList) {
+      this.setState({
+        currentTodoList: todoList
+      });
+    }
+  }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps, prevState) {
       var _this2 = this;
@@ -70010,8 +70026,12 @@ function (_React$Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Select a todo list from the left");
       } else {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_todoListsMainSelectedListDisplay__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          setReload: this.props.setReload,
+          callbackUpdateCurrentTodoList: this.callbackUpdateCurrentTodoList,
           selectedTodoList: currentTodoList,
           updateCurrentTodo: this.props.updateCurrentTodo
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_todoListsMainListItems__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          selectedTodoList: currentTodoList
         }));
       }
     }
@@ -70021,6 +70041,161 @@ function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (TodoLists);
+
+/***/ }),
+
+/***/ "./src/main/js/todoListsMainListItems.js":
+/*!***********************************************!*\
+  !*** ./src/main/js/todoListsMainListItems.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/index.es.js");
+/* harmony import */ var _material_ui_core_Table__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/core/Table */ "./node_modules/@material-ui/core/Table/index.js");
+/* harmony import */ var _material_ui_core_Table__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Table__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _material_ui_core_TableBody__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/core/TableBody */ "./node_modules/@material-ui/core/TableBody/index.js");
+/* harmony import */ var _material_ui_core_TableBody__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_TableBody__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/core/TableCell */ "./node_modules/@material-ui/core/TableCell/index.js");
+/* harmony import */ var _material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _material_ui_core_TableHead__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @material-ui/core/TableHead */ "./node_modules/@material-ui/core/TableHead/index.js");
+/* harmony import */ var _material_ui_core_TableHead__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_TableHead__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _material_ui_core_TableRow__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @material-ui/core/TableRow */ "./node_modules/@material-ui/core/TableRow/index.js");
+/* harmony import */ var _material_ui_core_TableRow__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_TableRow__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/core/Paper */ "./node_modules/@material-ui/core/Paper/index.js");
+/* harmony import */ var _material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _material_ui_core_Checkbox_Checkbox__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @material-ui/core/Checkbox/Checkbox */ "./node_modules/@material-ui/core/Checkbox/Checkbox.js");
+/* harmony import */ var _material_ui_core_Checkbox_Checkbox__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Checkbox_Checkbox__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _material_ui_core_Button_Button__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @material-ui/core/Button/Button */ "./node_modules/@material-ui/core/Button/Button.js");
+/* harmony import */ var _material_ui_core_Button_Button__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Button_Button__WEBPACK_IMPORTED_MODULE_10__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+
+
+
+
+
+
+
+var styles = function styles(theme) {
+  return {
+    root: {
+      width: '100%',
+      marginTop: theme.spacing.unit * 3,
+      overflowX: 'auto'
+    },
+    table: {
+      minWidth: 700
+    }
+  };
+};
+
+var cardData = [{
+  id: 1,
+  name: "Tile 1",
+  description: "Description 1",
+  date: "23/12/2012",
+  completed: true
+}, {
+  id: 2,
+  name: "Tile 2",
+  description: "Description 2",
+  date: "23/12/2012",
+  completed: false
+}, {
+  id: 3,
+  name: "Tile 3",
+  description: "Description 3",
+  date: "23/12/2012",
+  completed: true
+}, {
+  id: 4,
+  name: "Tile 4",
+  description: "Description 4",
+  date: "23/12/2012",
+  completed: false
+}, {
+  id: 5,
+  name: "Tile 5",
+  description: "Description 5",
+  date: "23/12/2012",
+  completed: false
+}];
+
+var TodoListsMainListItems =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(TodoListsMainListItems, _React$Component);
+
+  function TodoListsMainListItems(props) {
+    var _this;
+
+    _classCallCheck(this, TodoListsMainListItems);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(TodoListsMainListItems).call(this, props));
+    _this.state = {};
+    return _this;
+  }
+
+  _createClass(TodoListsMainListItems, [{
+    key: "render",
+    value: function render() {
+      var classes = this.props.classes;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_8___default.a, {
+        className: classes.root
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Table__WEBPACK_IMPORTED_MODULE_3___default.a, {
+        className: classes.table
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableHead__WEBPACK_IMPORTED_MODULE_6___default.a, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableRow__WEBPACK_IMPORTED_MODULE_7___default.a, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, null, "Completed"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, null, "ID"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, null, "Name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, null, "Description"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, null, "Date"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableBody__WEBPACK_IMPORTED_MODULE_4___default.a, null, cardData.map(function (row) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableRow__WEBPACK_IMPORTED_MODULE_7___default.a, {
+          key: row.id
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, {
+          padding: "checkbox"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Checkbox_Checkbox__WEBPACK_IMPORTED_MODULE_9___default.a, {
+          checked: row.completed
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, {
+          component: "th",
+          scope: "row"
+        }, row.id), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, null, row.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, null, row.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, null, row.date), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button_Button__WEBPACK_IMPORTED_MODULE_10___default.a, {
+          color: "primary"
+        }, "Edit")));
+      }))));
+    }
+  }]);
+
+  return TodoListsMainListItems;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+TodoListsMainListItems.propTypes = {
+  classes: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.object.isRequired
+};
+/* harmony default export */ __webpack_exports__["default"] = (Object(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["withStyles"])(styles)(TodoListsMainListItems));
 
 /***/ }),
 
@@ -70047,6 +70222,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @material-ui/core/Typography */ "./node_modules/@material-ui/core/Typography/index.js");
 /* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _material_ui_core_DialogTitle_DialogTitle__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @material-ui/core/DialogTitle/DialogTitle */ "./node_modules/@material-ui/core/DialogTitle/DialogTitle.js");
+/* harmony import */ var _material_ui_core_DialogTitle_DialogTitle__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_DialogTitle_DialogTitle__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _material_ui_core_DialogContent_DialogContent__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/core/DialogContent/DialogContent */ "./node_modules/@material-ui/core/DialogContent/DialogContent.js");
+/* harmony import */ var _material_ui_core_DialogContent_DialogContent__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_DialogContent_DialogContent__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _material_ui_core_DialogContentText_DialogContentText__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @material-ui/core/DialogContentText/DialogContentText */ "./node_modules/@material-ui/core/DialogContentText/DialogContentText.js");
+/* harmony import */ var _material_ui_core_DialogContentText_DialogContentText__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_DialogContentText_DialogContentText__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _material_ui_core_TextField_TextField__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @material-ui/core/TextField/TextField */ "./node_modules/@material-ui/core/TextField/TextField.js");
+/* harmony import */ var _material_ui_core_TextField_TextField__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_TextField_TextField__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _material_ui_core_DialogActions_DialogActions__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @material-ui/core/DialogActions/DialogActions */ "./node_modules/@material-ui/core/DialogActions/DialogActions.js");
+/* harmony import */ var _material_ui_core_DialogActions_DialogActions__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_DialogActions_DialogActions__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _material_ui_core_Dialog_Dialog__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @material-ui/core/Dialog/Dialog */ "./node_modules/@material-ui/core/Dialog/Dialog.js");
+/* harmony import */ var _material_ui_core_Dialog_Dialog__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Dialog_Dialog__WEBPACK_IMPORTED_MODULE_12__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -70057,13 +70244,21 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
 
 
 
@@ -70100,8 +70295,103 @@ function (_React$Component) {
     _classCallCheck(this, TodoListsMainSelectedListDisplay);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(TodoListsMainSelectedListDisplay).call(this, props));
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleClickOpen", function () {
+      _this.setState({
+        open: true
+      });
+
+      _this.setState({
+        name: _this.props.selectedTodoList.name
+      });
+
+      _this.setState({
+        description: _this.props.selectedTodoList.description
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleAddClose", function () {
+      _this.setState({
+        open: false
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleUpdate", function () {
+      console.log("handleCreate, " + _this.state.name + ", " + _this.state.description);
+      var name = _this.state.name;
+      var description = _this.state.description;
+      var formData = new FormData();
+      formData.append('name', name);
+      formData.append('description', description);
+      fetch("/api/todolists/" + _this.props.selectedTodoList.id, {
+        method: "POST",
+        body: formData
+      }).then(function (response) {
+        return response.json();
+      }).then(function (data) {
+        _this.handleAddClose();
+
+        _this.props.callbackUpdateCurrentTodoList(data);
+
+        _this.props.updateCurrentTodo(data.id);
+
+        _this.props.setReload(true);
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onNameInputChange", function (event) {
+      if (event.target.value) {
+        _this.setState({
+          name: event.target.value
+        });
+      } else {
+        _this.setState({
+          name: ''
+        });
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onDescriptionInputChange", function (event) {
+      if (event.target.value) {
+        _this.setState({
+          description: event.target.value
+        });
+      } else {
+        _this.setState({
+          description: ''
+        });
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onNameInputChange", function (event) {
+      if (event.target.value) {
+        _this.setState({
+          name: event.target.value
+        });
+      } else {
+        _this.setState({
+          name: ''
+        });
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onDescriptionInputChange", function (event) {
+      if (event.target.value) {
+        _this.setState({
+          description: event.target.value
+        });
+      } else {
+        _this.setState({
+          description: ''
+        });
+      }
+    });
+
     _this.state = {
-      response: null
+      open: false,
+      response: null,
+      name: _this.props.selectedTodoList.name,
+      description: _this.props.selectedTodoList.description
     };
     return _this;
   }
@@ -70143,12 +70433,45 @@ function (_React$Component) {
           component: "p"
         }, this.props.selectedTodoList.description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_CardActions__WEBPACK_IMPORTED_MODULE_3___default.a, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_5___default.a, {
           size: "small"
+        }, "Add Task"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_5___default.a, {
+          size: "small",
+          onClick: this.handleClickOpen
         }, "Edit"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_5___default.a, {
           size: "small",
           onClick: function onClick() {
             return _this3.deleteItem(_this3.props.selectedTodoList.id);
           }
-        }, "Delete")));
+        }, "Delete"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Dialog_Dialog__WEBPACK_IMPORTED_MODULE_12___default.a, {
+          open: this.state.open,
+          onClose: this.handleAddClose,
+          "aria-labelledby": "form-dialog-title"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_DialogTitle_DialogTitle__WEBPACK_IMPORTED_MODULE_7___default.a, {
+          id: "form-dialog-title"
+        }, "Update Todo List"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_DialogContent_DialogContent__WEBPACK_IMPORTED_MODULE_8___default.a, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_DialogContentText_DialogContentText__WEBPACK_IMPORTED_MODULE_9___default.a, null, "Enter the name and description to update this todo list."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TextField_TextField__WEBPACK_IMPORTED_MODULE_10___default.a, {
+          margin: "dense",
+          id: "name",
+          value: this.state.name,
+          onChange: this.onNameInputChange,
+          label: "Name",
+          type: "text",
+          fullWidth: true
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TextField_TextField__WEBPACK_IMPORTED_MODULE_10___default.a, {
+          margin: "dense",
+          id: "description",
+          value: this.state.description,
+          onChange: this.onDescriptionInputChange,
+          label: "Description",
+          type: "text",
+          fullWidth: true
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_DialogActions_DialogActions__WEBPACK_IMPORTED_MODULE_11___default.a, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_5___default.a, {
+          onClick: this.handleAddClose,
+          color: "primary"
+        }, "Cancel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_5___default.a, {
+          onClick: function onClick() {
+            return _this3.handleUpdate();
+          },
+          color: "primary"
+        }, "Update")))));
       }
     }
   }]);

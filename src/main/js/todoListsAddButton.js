@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -16,9 +15,6 @@ import List from "@material-ui/core/List/List";
 class TodoListsAddButton extends React.Component {
     constructor(props) {
         super(props);
-        this.handleClickOpen = this.handleClickOpen.bind(this);
-        this.handleClose = this.handleClose.bind(this);
-        this.handleCreate = this.handleCreate.bind(this);
         self = this;
         this.state = {
             open: false,
@@ -27,25 +23,26 @@ class TodoListsAddButton extends React.Component {
         };
     }
 
-    handleClickOpen(){
+    handleClickOpen = () => {
         this.setState({
             open: true
         });
     };
 
-    handleClose(){
+    handleClose = () => {
+        console.log("handleClose");
         this.setState({
             open: false
         });
     };
 
-    handleCreate() {
+    handleCreate = () => {
         console.log("handleCreate, " + this.state.name + ", " + this.state.description);
 
         let name = this.state.name;
         let description = this.state.description;
 
-        var formData = new FormData();
+        let formData = new FormData();
         formData.append('name', name);
         formData.append('description', description);
 
@@ -54,16 +51,15 @@ class TodoListsAddButton extends React.Component {
                 method: "POST",
                 body: formData
             })
-            .then(function(res){ return res.json(); })
-            .then(function(data){
-                self.props.updateCurrentTodo(data.id);
-                self.props.setReload(true);
-                self.handleClose();
+            .then(response => response.json())
+            .then(data => {
+                this.props.updateCurrentTodo(data.id);
+                this.props.setReload(true);
+                this.handleClose();
             })
     };
 
     onNameInputChange = (event) => {
-        console.log("Name changed ..." + event.target.value)
         if (event.target.value) {
             this.setState({name: event.target.value})
         } else {
@@ -72,7 +68,6 @@ class TodoListsAddButton extends React.Component {
     }
 
     onDescriptionInputChange = (event) => {
-        console.log("Description changed ..." + event.target.value)
         if (event.target.value) {
             this.setState({description: event.target.value})
         } else {
@@ -87,11 +82,7 @@ class TodoListsAddButton extends React.Component {
                     <ListItemIcon><AddIcon/></ListItemIcon>
                     <ListItemText>Add List</ListItemText>
                 </ListItem>
-                <Dialog
-                    open={this.state.open}
-                    onClose={this.handleClose}
-                    aria-labelledby="form-dialog-title"
-                >
+                <Dialog open={this.state.open} onClose={this.handleClose} aria-labelledby="form-dialog-title" >
                     <DialogTitle id="form-dialog-title">Create a Todo List</DialogTitle>
                     <DialogContent>
                         <DialogContentText>

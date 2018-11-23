@@ -12,8 +12,6 @@ public class Account {
 	String email; // Can be Long, long, or String
 
 	public Account(){
-		this.userId = null;
-		this.email = null;
 	}
 
 	public Account(String email, String userId){
