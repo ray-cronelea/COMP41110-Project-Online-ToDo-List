@@ -1,7 +1,13 @@
 import React from 'react';
 import TodoListsMainSelectedListDisplay from './todoListsMainSelectedListDisplay'
 import TodoListsMainListItems from './todoListsMainListItems'
+import Typography from "@material-ui/core/Typography/Typography";
+import CardContent from "@material-ui/core/CardContent/CardContent";
+import Card from "@material-ui/core/Card/Card";
+import {withStyles} from "@material-ui/core";
 
+const styles = theme => ({
+});
 
 class TodoLists extends React.Component {
     constructor(props) {
@@ -48,11 +54,20 @@ class TodoLists extends React.Component {
     }
 
     render() {
+        const { classes } = this.props;
         const { error, isLoaded, currentTodoList } = this.state;
         if (error) {
             return <div>Error: {error.message}</div>;
         } else if (!isLoaded || (this.props.selectedId == null)) {
-            return <div>Select a todo list from the left</div>;
+            return(
+                <div style={{flex:1}}>
+                    <Card style={{flex:1, alignSelf:'stretch'}} className={classes.card}>
+                        <CardContent>
+                            <Typography>Please select a list from the sidebar!</Typography>
+                        </CardContent>
+                    </Card>
+                </div>
+            );
         } else {
             return (
                 <div>
@@ -64,4 +79,4 @@ class TodoLists extends React.Component {
     }
 }
 
-export default TodoLists;
+export default withStyles(styles)(TodoLists);
