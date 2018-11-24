@@ -34754,6 +34754,38 @@ exports.default = _default;
 
 /***/ }),
 
+/***/ "./node_modules/@material-ui/icons/Add.js":
+/*!************************************************!*\
+  !*** ./node_modules/@material-ui/icons/Add.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@material-ui/icons/node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var _createSvgIcon = _interopRequireDefault(__webpack_require__(/*! ./utils/createSvgIcon */ "./node_modules/@material-ui/icons/utils/createSvgIcon.js"));
+
+var _default = (0, _createSvgIcon.default)(_react.default.createElement(_react.default.Fragment, null, _react.default.createElement("path", {
+  d: "M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+}), _react.default.createElement("path", {
+  fill: "none",
+  d: "M0 0h24v24H0z"
+})), 'Add');
+
+exports.default = _default;
+
+/***/ }),
+
 /***/ "./node_modules/@material-ui/icons/AddCircle.js":
 /*!******************************************************!*\
   !*** ./node_modules/@material-ui/icons/AddCircle.js ***!
@@ -34781,6 +34813,70 @@ var _default = (0, _createSvgIcon.default)(_react.default.createElement(_react.d
 }), _react.default.createElement("path", {
   d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"
 })), 'AddCircle');
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/icons/Delete.js":
+/*!***************************************************!*\
+  !*** ./node_modules/@material-ui/icons/Delete.js ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@material-ui/icons/node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var _createSvgIcon = _interopRequireDefault(__webpack_require__(/*! ./utils/createSvgIcon */ "./node_modules/@material-ui/icons/utils/createSvgIcon.js"));
+
+var _default = (0, _createSvgIcon.default)(_react.default.createElement(_react.default.Fragment, null, _react.default.createElement("path", {
+  d: "M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+}), _react.default.createElement("path", {
+  fill: "none",
+  d: "M0 0h24v24H0z"
+})), 'Delete');
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/icons/Edit.js":
+/*!*************************************************!*\
+  !*** ./node_modules/@material-ui/icons/Edit.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@material-ui/icons/node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var _createSvgIcon = _interopRequireDefault(__webpack_require__(/*! ./utils/createSvgIcon */ "./node_modules/@material-ui/icons/utils/createSvgIcon.js"));
+
+var _default = (0, _createSvgIcon.default)(_react.default.createElement(_react.default.Fragment, null, _react.default.createElement("path", {
+  d: "M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+}), _react.default.createElement("path", {
+  fill: "none",
+  d: "M0 0h24v24H0z"
+})), 'Edit');
 
 exports.default = _default;
 
@@ -69812,8 +69908,7 @@ var styles = function styles(theme) {
   return {
     selected: {
       backgroundColor: theme.palette.background.paper
-    },
-    notselected: {}
+    }
   };
 };
 
@@ -69931,8 +70026,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _todoListsMainSelectedListDisplay__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./todoListsMainSelectedListDisplay */ "./src/main/js/todoListsMainSelectedListDisplay.js");
 /* harmony import */ var _todoListsMainListItems__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./todoListsMainListItems */ "./src/main/js/todoListsMainListItems.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_3__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -69950,7 +70043,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 
 
 
@@ -70074,6 +70166,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_core_Checkbox_Checkbox__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Checkbox_Checkbox__WEBPACK_IMPORTED_MODULE_9__);
 /* harmony import */ var _material_ui_core_Button_Button__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @material-ui/core/Button/Button */ "./node_modules/@material-ui/core/Button/Button.js");
 /* harmony import */ var _material_ui_core_Button_Button__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Button_Button__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _material_ui_core_Dialog_Dialog__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @material-ui/core/Dialog/Dialog */ "./node_modules/@material-ui/core/Dialog/Dialog.js");
+/* harmony import */ var _material_ui_core_Dialog_Dialog__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Dialog_Dialog__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _material_ui_core_DialogTitle_DialogTitle__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @material-ui/core/DialogTitle/DialogTitle */ "./node_modules/@material-ui/core/DialogTitle/DialogTitle.js");
+/* harmony import */ var _material_ui_core_DialogTitle_DialogTitle__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_DialogTitle_DialogTitle__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var _material_ui_core_DialogContent_DialogContent__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @material-ui/core/DialogContent/DialogContent */ "./node_modules/@material-ui/core/DialogContent/DialogContent.js");
+/* harmony import */ var _material_ui_core_DialogContent_DialogContent__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_DialogContent_DialogContent__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var _material_ui_core_DialogContentText_DialogContentText__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @material-ui/core/DialogContentText/DialogContentText */ "./node_modules/@material-ui/core/DialogContentText/DialogContentText.js");
+/* harmony import */ var _material_ui_core_DialogContentText_DialogContentText__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_DialogContentText_DialogContentText__WEBPACK_IMPORTED_MODULE_14__);
+/* harmony import */ var _material_ui_core_TextField_TextField__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @material-ui/core/TextField/TextField */ "./node_modules/@material-ui/core/TextField/TextField.js");
+/* harmony import */ var _material_ui_core_TextField_TextField__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_TextField_TextField__WEBPACK_IMPORTED_MODULE_15__);
+/* harmony import */ var _material_ui_core_DialogActions_DialogActions__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @material-ui/core/DialogActions/DialogActions */ "./node_modules/@material-ui/core/DialogActions/DialogActions.js");
+/* harmony import */ var _material_ui_core_DialogActions_DialogActions__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_DialogActions_DialogActions__WEBPACK_IMPORTED_MODULE_16__);
+/* harmony import */ var _material_ui_icons_Add__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @material-ui/icons/Add */ "./node_modules/@material-ui/icons/Add.js");
+/* harmony import */ var _material_ui_icons_Add__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Add__WEBPACK_IMPORTED_MODULE_17__);
+/* harmony import */ var _material_ui_icons_Delete__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @material-ui/icons/Delete */ "./node_modules/@material-ui/icons/Delete.js");
+/* harmony import */ var _material_ui_icons_Delete__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Delete__WEBPACK_IMPORTED_MODULE_18__);
+/* harmony import */ var _material_ui_icons_Edit__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @material-ui/icons/Edit */ "./node_modules/@material-ui/icons/Edit.js");
+/* harmony import */ var _material_ui_icons_Edit__WEBPACK_IMPORTED_MODULE_19___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Edit__WEBPACK_IMPORTED_MODULE_19__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -70084,13 +70194,24 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+
+
+
 
 
 
@@ -70112,42 +70233,14 @@ var styles = function styles(theme) {
       overflowX: 'auto'
     },
     table: {
-      minWidth: 700
+      minWidth: 700,
+      tableLayout: 'auto'
+    },
+    tabbutton: {
+      'width': '5%'
     }
   };
 };
-
-var cardData = [{
-  id: 1,
-  name: "Tile 1",
-  description: "Description 1",
-  date: "23/12/2012",
-  completed: true
-}, {
-  id: 2,
-  name: "Tile 2",
-  description: "Description 2",
-  date: "23/12/2012",
-  completed: false
-}, {
-  id: 3,
-  name: "Tile 3",
-  description: "Description 3",
-  date: "23/12/2012",
-  completed: true
-}, {
-  id: 4,
-  name: "Tile 4",
-  description: "Description 4",
-  date: "23/12/2012",
-  completed: false
-}, {
-  id: 5,
-  name: "Tile 5",
-  description: "Description 5",
-  date: "23/12/2012",
-  completed: false
-}];
 
 var TodoListsMainListItems =
 /*#__PURE__*/
@@ -70160,32 +70253,368 @@ function (_React$Component) {
     _classCallCheck(this, TodoListsMainListItems);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(TodoListsMainListItems).call(this, props));
-    _this.state = {};
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "updateItems", function () {
+      console.log("Getting list items for id " + _this.props.selectedTodoList.id);
+      fetch("./api/todolists/" + _this.props.selectedTodoList.id + "/todolistitems").then(function (res) {
+        return res.json();
+      }).then(function (result) {
+        // Examine the text in the response
+        console.log(result);
+
+        _this.setState({
+          isLoaded: true,
+          itemData: result
+        });
+      }, function (error) {
+        _this.setState({
+          isLoaded: true,
+          error: error
+        });
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onAddNameInputChange", function (event) {
+      if (event.target.value) {
+        _this.setState({
+          addName: event.target.value
+        });
+      } else {
+        _this.setState({
+          addName: ''
+        });
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onAddDescriptionInputChange", function (event) {
+      if (event.target.value) {
+        _this.setState({
+          addDescription: event.target.value
+        });
+      } else {
+        _this.setState({
+          addDescription: ''
+        });
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onAddDateInputChange", function (event) {
+      if (event.target.value) {
+        _this.setState({
+          addDate: event.target.value
+        });
+      } else {
+        _this.setState({
+          addDate: ''
+        });
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleClickOpenAddItem", function () {
+      _this.setState({
+        openAddItem: true,
+        addName: "",
+        addDescription: "",
+        addDate: ""
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleAddItemClose", function () {
+      _this.setState({
+        openAddItem: false
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleAddItem", function () {
+      console.log("handleAddItem, " + _this.state.addName + ", " + _this.state.addDescription + ", " + _this.state.addDate);
+      var name = _this.state.addName;
+      var description = _this.state.addDescription;
+      var date = _this.state.addDate;
+      var completed = "false";
+      var formData = new FormData();
+      formData.append('name', name);
+      formData.append('description', description);
+      formData.append('date', date);
+      formData.append('completed', completed);
+      fetch("/api/todolists/" + _this.props.selectedTodoList.id + "/todolistitems", {
+        method: "POST",
+        body: formData
+      }).then(function (response) {
+        return response.json();
+      }).then(function (data) {
+        _this.updateItems();
+
+        _this.handleAddItemClose();
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleCheckboxChange", function (event, numid) {
+      console.log(numid + " " + event.target.checked);
+      var val = 0;
+
+      if (event.target.checked === true) {
+        val = 1;
+      }
+
+      fetch("/api/itemstatus/" + numid.toString() + "/" + val.toString(), {
+        method: "POST"
+      }).then(function (data) {
+        _this.updateItems();
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleDelete", function (event, numid) {
+      console.log("Delete: " + numid.toString());
+      fetch("/api/todolistitems/" + numid.toString(), {
+        method: "DELETE"
+      }).then(function (res) {
+        return res.text();
+      }).then(function (res) {
+        return _this.updateItems();
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onEditNameInputChange", function (event) {
+      if (event.target.value) {
+        _this.setState({
+          editName: event.target.value
+        });
+      } else {
+        _this.setState({
+          editName: ''
+        });
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onEditDescriptionInputChange", function (event) {
+      if (event.target.value) {
+        _this.setState({
+          editDescription: event.target.value
+        });
+      } else {
+        _this.setState({
+          editDescription: ''
+        });
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onEditDateInputChange", function (event) {
+      if (event.target.value) {
+        _this.setState({
+          editDate: event.target.value
+        });
+      } else {
+        _this.setState({
+          editDate: ''
+        });
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleClickOpenEditItem", function (id, name, date, description) {
+      _this.setState({
+        openEditItem: true,
+        editId: id,
+        editName: name,
+        editDate: date,
+        editDescription: description
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleEditItemClose", function () {
+      _this.setState({
+        openEditItem: false
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleEditItem", function () {
+      var id = _this.state.editId;
+      var name = _this.state.editName;
+      var description = _this.state.editDescription;
+      var date = _this.state.editDate;
+      var formData = new FormData();
+      formData.append('name', name);
+      formData.append('description', description);
+      formData.append('date', date);
+      fetch("/api/todolistitems/" + id, {
+        method: "POST",
+        body: formData
+      }).then(function (response) {
+        return response.json();
+      }).then(function (data) {
+        _this.handleEditItemClose();
+
+        _this.updateItems();
+      });
+    });
+
+    _this.state = {
+      isLoaded: false,
+      openAddItem: false,
+      itemData: [],
+      addName: "",
+      addDescription: "",
+      addDate: "",
+      openEditItem: false,
+      editName: "",
+      editDescription: "",
+      editDate: "",
+      editId: ""
+    };
     return _this;
   }
 
   _createClass(TodoListsMainListItems, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      console.log("component did mount");
+      this.updateItems();
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps, prevState) {
+      if (prevProps.selectedTodoList.id !== this.props.selectedTodoList.id) {
+        if (this.props.selectedTodoList.id !== null) {
+          this.updateItems();
+        }
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       var classes = this.props.classes;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_8___default.a, {
         className: classes.root
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Table__WEBPACK_IMPORTED_MODULE_3___default.a, {
         className: classes.table
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableHead__WEBPACK_IMPORTED_MODULE_6___default.a, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableRow__WEBPACK_IMPORTED_MODULE_7___default.a, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, null, "Completed"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, null, "ID"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, null, "Name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, null, "Description"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, null, "Date"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableBody__WEBPACK_IMPORTED_MODULE_4___default.a, null, cardData.map(function (row) {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableHead__WEBPACK_IMPORTED_MODULE_6___default.a, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableRow__WEBPACK_IMPORTED_MODULE_7___default.a, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, {
+        className: classes.tabbutton
+      }, "Done"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, null, "Name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, null, "Description"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, null, "Date"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, {
+        className: classes.tabbutton
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button_Button__WEBPACK_IMPORTED_MODULE_10___default.a, {
+        color: "primary",
+        onClick: this.handleClickOpenAddItem
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_icons_Add__WEBPACK_IMPORTED_MODULE_17___default.a, null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, {
+        className: classes.tabbutton
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableBody__WEBPACK_IMPORTED_MODULE_4___default.a, null, this.state.itemData.map(function (row) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableRow__WEBPACK_IMPORTED_MODULE_7___default.a, {
           key: row.id
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, {
-          padding: "checkbox"
+          padding: "checkbox",
+          className: classes.tabbutton
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Checkbox_Checkbox__WEBPACK_IMPORTED_MODULE_9___default.a, {
-          checked: row.completed
-        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, {
-          component: "th",
-          scope: "row"
-        }, row.id), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, null, row.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, null, row.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, null, row.date), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button_Button__WEBPACK_IMPORTED_MODULE_10___default.a, {
-          color: "primary"
-        }, "Edit")));
-      }))));
+          defaultChecked: row.completed,
+          onChange: function onChange(e) {
+            _this2.handleCheckboxChange(e, row.id);
+          }
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, null, row.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, null, row.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, null, row.date), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, {
+          className: classes.tabbutton
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button_Button__WEBPACK_IMPORTED_MODULE_10___default.a, {
+          color: "primary",
+          onClick: function onClick(e) {
+            return _this2.handleClickOpenEditItem(row.id, row.name, row.date, row.description);
+          }
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_icons_Edit__WEBPACK_IMPORTED_MODULE_19___default.a, null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, {
+          className: classes.tabbutton
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button_Button__WEBPACK_IMPORTED_MODULE_10___default.a, {
+          color: "primary",
+          onClick: function onClick(e) {
+            return _this2.handleDelete(e, row.id);
+          }
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_icons_Delete__WEBPACK_IMPORTED_MODULE_18___default.a, null))));
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Dialog_Dialog__WEBPACK_IMPORTED_MODULE_11___default.a, {
+        open: this.state.openAddItem,
+        onClose: this.handleAddItemClose,
+        "aria-labelledby": "form-dialog-title"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_DialogTitle_DialogTitle__WEBPACK_IMPORTED_MODULE_12___default.a, {
+        id: "form-dialog-title"
+      }, "Add New List Item"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_DialogContent_DialogContent__WEBPACK_IMPORTED_MODULE_13___default.a, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_DialogContentText_DialogContentText__WEBPACK_IMPORTED_MODULE_14___default.a, null, "Enter the new values in the form below"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TextField_TextField__WEBPACK_IMPORTED_MODULE_15___default.a, {
+        margin: "dense",
+        id: "name",
+        onChange: this.onAddNameInputChange,
+        InputLabelProps: {
+          shrink: true
+        },
+        label: "Name",
+        type: "text",
+        fullWidth: true
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TextField_TextField__WEBPACK_IMPORTED_MODULE_15___default.a, {
+        margin: "dense",
+        id: "description",
+        onChange: this.onAddDescriptionInputChange,
+        InputLabelProps: {
+          shrink: true
+        },
+        label: "Description",
+        type: "text",
+        fullWidth: true
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TextField_TextField__WEBPACK_IMPORTED_MODULE_15___default.a, {
+        margin: "dense",
+        id: "date",
+        onChange: this.onAddDateInputChange,
+        InputLabelProps: {
+          shrink: true
+        },
+        label: "Date",
+        type: "date",
+        fullWidth: true
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_DialogActions_DialogActions__WEBPACK_IMPORTED_MODULE_16___default.a, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button_Button__WEBPACK_IMPORTED_MODULE_10___default.a, {
+        onClick: this.handleAddItemClose,
+        color: "primary"
+      }, "Cancel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button_Button__WEBPACK_IMPORTED_MODULE_10___default.a, {
+        onClick: function onClick() {
+          return _this2.handleAddItem();
+        },
+        color: "primary"
+      }, "Add"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Dialog_Dialog__WEBPACK_IMPORTED_MODULE_11___default.a, {
+        open: this.state.openEditItem,
+        onClose: this.handleEditItemClose,
+        "aria-labelledby": "form-dialog-title"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_DialogTitle_DialogTitle__WEBPACK_IMPORTED_MODULE_12___default.a, {
+        id: "form-dialog-title"
+      }, "Edit List Item"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_DialogContent_DialogContent__WEBPACK_IMPORTED_MODULE_13___default.a, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_DialogContentText_DialogContentText__WEBPACK_IMPORTED_MODULE_14___default.a, null, "Enter the new values in the form below"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TextField_TextField__WEBPACK_IMPORTED_MODULE_15___default.a, {
+        margin: "dense",
+        id: "name",
+        value: this.state.editName,
+        onChange: this.onEditNameInputChange,
+        InputLabelProps: {
+          shrink: true
+        },
+        label: "Name",
+        type: "text",
+        fullWidth: true
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TextField_TextField__WEBPACK_IMPORTED_MODULE_15___default.a, {
+        margin: "dense",
+        id: "description",
+        value: this.state.editDescription,
+        onChange: this.onEditDescriptionInputChange,
+        InputLabelProps: {
+          shrink: true
+        },
+        label: "Description",
+        type: "text",
+        fullWidth: true
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TextField_TextField__WEBPACK_IMPORTED_MODULE_15___default.a, {
+        margin: "dense",
+        id: "date",
+        value: this.state.editDate,
+        onChange: this.onEditDateInputChange,
+        InputLabelProps: {
+          shrink: true
+        },
+        label: "Date",
+        type: "date",
+        fullWidth: true
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_DialogActions_DialogActions__WEBPACK_IMPORTED_MODULE_16___default.a, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button_Button__WEBPACK_IMPORTED_MODULE_10___default.a, {
+        onClick: this.handleEditItemClose,
+        color: "primary"
+      }, "Cancel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button_Button__WEBPACK_IMPORTED_MODULE_10___default.a, {
+        onClick: function onClick() {
+          return _this2.handleEditItem();
+        },
+        color: "primary"
+      }, "Add"))));
     }
   }]);
 
@@ -70296,9 +70725,9 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(TodoListsMainSelectedListDisplay).call(this, props));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleClickOpen", function () {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleClickOpenUpdate", function () {
       _this.setState({
-        open: true
+        openUpdate: true
       });
 
       _this.setState({
@@ -70310,9 +70739,9 @@ function (_React$Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleAddClose", function () {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleUpdateClose", function () {
       _this.setState({
-        open: false
+        openUpdate: false
       });
     });
 
@@ -70329,7 +70758,7 @@ function (_React$Component) {
       }).then(function (response) {
         return response.json();
       }).then(function (data) {
-        _this.handleAddClose();
+        _this.handleUpdateClose();
 
         _this.props.callbackUpdateCurrentTodoList(data);
 
@@ -70363,32 +70792,8 @@ function (_React$Component) {
       }
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onNameInputChange", function (event) {
-      if (event.target.value) {
-        _this.setState({
-          name: event.target.value
-        });
-      } else {
-        _this.setState({
-          name: ''
-        });
-      }
-    });
-
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onDescriptionInputChange", function (event) {
-      if (event.target.value) {
-        _this.setState({
-          description: event.target.value
-        });
-      } else {
-        _this.setState({
-          description: ''
-        });
-      }
-    });
-
     _this.state = {
-      open: false,
+      openUpdate: false,
       response: null,
       name: _this.props.selectedTodoList.name,
       description: _this.props.selectedTodoList.description
@@ -70433,17 +70838,17 @@ function (_React$Component) {
           component: "p"
         }, this.props.selectedTodoList.description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_CardActions__WEBPACK_IMPORTED_MODULE_3___default.a, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_5___default.a, {
           size: "small"
-        }, "Add Task"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_5___default.a, {
+        }, "Share"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_5___default.a, {
           size: "small",
-          onClick: this.handleClickOpen
+          onClick: this.handleClickOpenUpdate
         }, "Edit"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_5___default.a, {
           size: "small",
           onClick: function onClick() {
             return _this3.deleteItem(_this3.props.selectedTodoList.id);
           }
         }, "Delete"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Dialog_Dialog__WEBPACK_IMPORTED_MODULE_12___default.a, {
-          open: this.state.open,
-          onClose: this.handleAddClose,
+          open: this.state.openUpdate,
+          onClose: this.handleUpdateClose,
           "aria-labelledby": "form-dialog-title"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_DialogTitle_DialogTitle__WEBPACK_IMPORTED_MODULE_7___default.a, {
           id: "form-dialog-title"
@@ -70464,7 +70869,7 @@ function (_React$Component) {
           type: "text",
           fullWidth: true
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_DialogActions_DialogActions__WEBPACK_IMPORTED_MODULE_11___default.a, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_5___default.a, {
-          onClick: this.handleAddClose,
+          onClick: this.handleUpdateClose,
           color: "primary"
         }, "Cancel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_5___default.a, {
           onClick: function onClick() {

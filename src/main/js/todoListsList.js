@@ -7,8 +7,6 @@ import {withStyles} from "@material-ui/core";
 const styles = theme => ({
     selected: {
         backgroundColor: theme.palette.background.paper,
-    },
-    notselected: {
     }
 });
 

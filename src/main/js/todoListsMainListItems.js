@@ -9,6 +9,15 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Checkbox from "@material-ui/core/Checkbox/Checkbox";
 import Button from "@material-ui/core/Button/Button";
+import Dialog from "@material-ui/core/Dialog/Dialog";
+import DialogTitle from "@material-ui/core/DialogTitle/DialogTitle";
+import DialogContent from "@material-ui/core/DialogContent/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText/DialogContentText";
+import TextField from "@material-ui/core/TextField/TextField";
+import DialogActions from "@material-ui/core/DialogActions/DialogActions";
+import AddIcon from '@material-ui/icons/Add';
+import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
 
 const styles = theme => ({
     root: {
@@ -18,52 +27,222 @@ const styles = theme => ({
     },
     table: {
         minWidth: 700,
+        tableLayout: 'auto'
     },
-});
-
-const cardData = [
-    {
-        id: 1,
-        name: "Tile 1",
-        description: "Description 1",
-        date: "23/12/2012",
-        completed: true,
-    },
-    {
-        id: 2,
-        name: "Tile 2",
-        description: "Description 2",
-        date: "23/12/2012",
-        completed: false,
-    },
-    {
-        id: 3,
-        name: "Tile 3",
-        description: "Description 3",
-        date: "23/12/2012",
-        completed: true,
-    },
-    {
-        id: 4,
-        name: "Tile 4",
-        description: "Description 4",
-        date: "23/12/2012",
-        completed: false,
-    },
-    {
-        id: 5,
-        name: "Tile 5",
-        description: "Description 5",
-        date: "23/12/2012",
-        completed: false,
+    tabbutton: {
+        'width': '5%',
     }
-];
+});
 
 class TodoListsMainListItems extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            isLoaded: false,
+            openAddItem: false,
+            itemData: [],
+            addName: "",
+            addDescription: "",
+            addDate: "",
+            openEditItem: false,
+            editName: "",
+            editDescription: "",
+            editDate: "",
+            editId: ""
+        };
     }
+
+    updateItems = () => {
+        console.log("Getting list items for id " + this.props.selectedTodoList.id);
+        fetch("./api/todolists/" + this.props.selectedTodoList.id + "/todolistitems")
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    // Examine the text in the response
+                    console.log(result);
+                    this.setState({
+                        isLoaded: true,
+                        itemData: result
+                    });
+                },
+                (error) => {
+                    this.setState({
+                        isLoaded: true,
+                        error
+                    });
+                }
+            )
+    }
+
+    componentDidMount() {
+        console.log("component did mount");
+        this.updateItems();
+    }
+
+    componentDidUpdate(prevProps, prevState){
+        if (prevProps.selectedTodoList.id !== this.props.selectedTodoList.id) {
+            if (this.props.selectedTodoList.id !== null) {
+                this.updateItems();
+            }
+        }
+    }
+
+    onAddNameInputChange = (event) => {
+        if (event.target.value) {
+            this.setState({addName: event.target.value})
+        } else {
+            this.setState({addName: ''})
+        }
+    }
+
+    onAddDescriptionInputChange = (event) => {
+        if (event.target.value) {
+            this.setState({addDescription: event.target.value})
+        } else {
+            this.setState({addDescription: ''})
+        }
+    }
+
+    onAddDateInputChange = (event) => {
+        if (event.target.value) {
+            this.setState({addDate: event.target.value})
+        } else {
+            this.setState({addDate: ''})
+        }
+    }
+
+    handleClickOpenAddItem = () => {
+        this.setState({
+            openAddItem: true,
+            addName: "",
+            addDescription: "",
+            addDate: "",
+
+        });
+    };
+
+    handleAddItemClose = () => {
+        this.setState({
+            openAddItem: false
+        });
+    };
+
+    handleAddItem = () => {
+        console.log("handleAddItem, " + this.state.addName + ", " + this.state.addDescription+ ", " + this.state.addDate);
+
+        let name = this.state.addName;
+        let description = this.state.addDescription;
+        let date = this.state.addDate;
+        let completed = "false";
+
+        let formData = new FormData();
+        formData.append('name', name);
+        formData.append('description', description);
+        formData.append('date', date);
+        formData.append('completed', completed);
+
+        fetch("/api/todolists/" + this.props.selectedTodoList.id + "/todolistitems",
+            {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                this.updateItems();
+                this.handleAddItemClose();
+            })
+    };
+
+    handleCheckboxChange = (event, numid) => {
+        console.log(numid + " " + event.target.checked)
+
+        let val = 0;
+        if (event.target.checked === true){
+            val = 1;
+        }
+
+        fetch("/api/itemstatus/" + numid.toString() + "/" + val.toString(),
+            {
+                method: "POST"
+            })
+            .then(data => {
+                this.updateItems();
+            })
+    };
+
+    handleDelete = (event, numid) => {
+        console.log("Delete: " + numid.toString());
+
+        fetch("/api/todolistitems/" + numid.toString(),
+            {
+                method: "DELETE"
+            })
+            .then(res => res.text())
+            .then(res => this.updateItems())
+    };
+
+    onEditNameInputChange = (event) => {
+        if (event.target.value) {
+            this.setState({editName: event.target.value})
+        } else {
+            this.setState({editName: ''})
+        }
+    }
+
+    onEditDescriptionInputChange = (event) => {
+        if (event.target.value) {
+            this.setState({editDescription: event.target.value})
+        } else {
+            this.setState({editDescription: ''})
+        }
+    }
+
+    onEditDateInputChange = (event) => {
+        if (event.target.value) {
+            this.setState({editDate: event.target.value})
+        } else {
+            this.setState({editDate: ''})
+        }
+    }
+
+    handleClickOpenEditItem = (id,name,date,description) => {
+        this.setState({
+            openEditItem: true,
+            editId: id,
+            editName: name,
+            editDate: date,
+            editDescription: description,
+        });
+    };
+
+    handleEditItemClose = () => {
+        this.setState({
+            openEditItem: false
+        });
+    };
+
+    handleEditItem = () => {
+        let id = this.state.editId;
+        let name = this.state.editName;
+        let description = this.state.editDescription;
+        let date = this.state.editDate;
+
+        let formData = new FormData();
+        formData.append('name', name);
+        formData.append('description', description);
+        formData.append('date', date);
+
+        fetch("/api/todolistitems/" + id,
+            {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                this.handleEditItemClose();
+                this.updateItems();
+            })
+    };
 
     render() {
         const { classes } = this.props;
@@ -72,32 +251,127 @@ class TodoListsMainListItems extends React.Component {
                 <Table className={classes.table}>
                     <TableHead>
                         <TableRow>
-                            <TableCell>Completed</TableCell>
-                            <TableCell>ID</TableCell>
+                            <TableCell className={classes.tabbutton}>Done</TableCell>
                             <TableCell>Name</TableCell>
                             <TableCell>Description</TableCell>
                             <TableCell>Date</TableCell>
-                            <TableCell></TableCell>
+                            <TableCell className={classes.tabbutton}><Button color="primary" onClick={this.handleClickOpenAddItem}><AddIcon /></Button></TableCell>
+                            <TableCell className={classes.tabbutton}/>
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {cardData.map(row => {
+                        {this.state.itemData.map(row => {
                             return (
                                 <TableRow key={row.id}>
-                                    <TableCell padding="checkbox">
-                                        <Checkbox checked={row.completed} />
+                                    <TableCell padding="checkbox" className={classes.tabbutton}>
+                                        <Checkbox defaultChecked={row.completed} onChange={(e) => {this.handleCheckboxChange(e, row.id)}}/>
                                     </TableCell>
-                                    <TableCell component="th" scope="row">{row.id}</TableCell>
                                     <TableCell>{row.name}</TableCell>
                                     <TableCell>{row.description}</TableCell>
                                     <TableCell>{row.date}</TableCell>
-                                    <TableCell><Button color="primary">Edit</Button></TableCell>
+                                    <TableCell className={classes.tabbutton}><Button color="primary" onClick={(e) => this.handleClickOpenEditItem(row.id,row.name,row.date,row.description)}><EditIcon/></Button></TableCell>
+                                    <TableCell className={classes.tabbutton}><Button color="primary" onClick={(e) => this.handleDelete(e,row.id)}><DeleteIcon/></Button></TableCell>
                                 </TableRow>
                             );
                         })}
                     </TableBody>
                 </Table>
+
+                {/* DIALOG FOR ADDING LIST ITEM */}
+                <Dialog open={this.state.openAddItem} onClose={this.handleAddItemClose} aria-labelledby="form-dialog-title" >
+                    <DialogTitle id="form-dialog-title">Add New List Item</DialogTitle>
+                    <DialogContent>
+                        <DialogContentText>
+                            Enter the new values in the form below
+                        </DialogContentText>
+                        <TextField
+                            margin="dense"
+                            id="name"
+                            onChange={this.onAddNameInputChange}
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                            label="Name"
+                            type="text"
+                            fullWidth
+                        />
+                        <TextField
+                            margin="dense"
+                            id="description"
+                            onChange={this.onAddDescriptionInputChange}
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                            label="Description"
+                            type="text"
+                            fullWidth
+                        />
+                        <TextField
+                            margin="dense"
+                            id="date"
+                            onChange={this.onAddDateInputChange}
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                            label="Date"
+                            type="date"
+                            fullWidth
+                        />
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={this.handleAddItemClose} color="primary">Cancel</Button>
+                        <Button onClick={() => this.handleAddItem()} color="primary">Add</Button>
+                    </DialogActions>
+                </Dialog>
+
+
+
+                {/* DIALOG FOR EDITING LIST ITEM */}
+                <Dialog open={this.state.openEditItem} onClose={this.handleEditItemClose} aria-labelledby="form-dialog-title" >
+                    <DialogTitle id="form-dialog-title">Edit List Item</DialogTitle>
+                    <DialogContent>
+                        <DialogContentText>
+                            Enter the new values in the form below
+                        </DialogContentText>
+                        <TextField
+                            margin="dense"
+                            id="name"
+                            value={this.state.editName}
+                            onChange={this.onEditNameInputChange}
+                            InputLabelProps={{shrink: true,}}
+                            label="Name"
+                            type="text"
+                            fullWidth
+                        />
+                        <TextField
+                            margin="dense"
+                            id="description"
+                            value={this.state.editDescription}
+                            onChange={this.onEditDescriptionInputChange}
+                            InputLabelProps={{shrink: true,}}
+                            label="Description"
+                            type="text"
+                            fullWidth
+                        />
+                        <TextField
+                            margin="dense"
+                            id="date"
+                            value={this.state.editDate}
+                            onChange={this.onEditDateInputChange}
+                            InputLabelProps={{shrink: true,}}
+                            label="Date"
+                            type="date"
+                            fullWidth
+                        />
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={this.handleEditItemClose} color="primary">Cancel</Button>
+                        <Button onClick={() => this.handleEditItem()} color="primary">Add</Button>
+                    </DialogActions>
+                </Dialog>
+
             </Paper>
+
         );
     }
 }

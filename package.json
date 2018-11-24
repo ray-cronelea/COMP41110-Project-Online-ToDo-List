@@ -7,8 +7,11 @@
   "license": "Apache-2.0",
   "homepage": "https://todo.raywilson.ie",
   "dependencies": {
+    "@date-io/date-fns": "0.0.2",
     "@material-ui/core": "^3.5.1",
     "@material-ui/icons": "^3.0.1",
+    "date-fns": "^2.0.0-alpha.16",
+    "material-ui-pickers": "^2.0.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "rest": "^1.3.1"

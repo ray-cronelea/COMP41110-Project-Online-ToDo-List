@@ -3,6 +3,8 @@ package ie.raywilson.todo;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.google.appengine.api.users.User;
 import com.googlecode.objectify.Key;
+import com.googlecode.objectify.Ref;
+import com.googlecode.objectify.cmd.Query;
 import ie.raywilson.todo.model.Account;
 import ie.raywilson.todo.model.TodoList;
 import ie.raywilson.todo.model.TodoListItem;
@@ -75,8 +77,11 @@ public class TodoListController {
 	@GetMapping(value = "/todolists/{id}/todolistitems", produces = "application/json")
 	public List<TodoListItem> todoListsGetItems(@PathVariable Long id){
 
-		Iterable<TodoListItem> todoListItems = ofy().load().type(TodoListItem.class).filter("listKey", id);
-		return Lists.newArrayList(todoListItems);
+		System.out.println("Returning list of items for id " + String.valueOf(id));
+		TodoList currentList = ofy().load().type(TodoList.class).id(id).now();
+		Iterable<TodoListItem> todoLists = ofy().load().type(TodoListItem.class).filter("listKeys", currentList);
+
+		return Lists.newArrayList(todoLists);
 	}
 
 	@GetMapping(value = "/todolists/{id}/todolistitems/{itemid}", produces = "application/json")
@@ -88,18 +93,19 @@ public class TodoListController {
 	@PostMapping(path = "/todolists/{id}/todolistitems")
 	public ResponseEntity todoListsPostItem(@ModelAttribute("todolistitem") TodoListItem todoListItem, @PathVariable Long id){
 
-		System.out.println("Item Post Mapping, " + todoListItem.getName() + ", " + todoListItem.getDescription());
-		Key<TodoList> listKey = Key.create(TodoList.class, id);
-		todoListItem.setListKey(listKey);
+		System.out.println("Item Post Mapping, " + todoListItem.getName() + ", " + todoListItem.getDescription() + " " + String.valueOf(id));
+		TodoList currentList = ofy().load().type(TodoList.class).id(id).now();
+		Key<TodoList> listKey = Key.create(TodoList.class, currentList.getId());
+		todoListItem.addList(listKey);
 		ofy().save().entity(todoListItem).now();
 
 		return new ResponseEntity(todoListItem, HttpStatus.OK);
 	}
 
-	@PostMapping(path = "/todolists/{id}/todolistitems/{itemid}")
-	public ResponseEntity todoListsPostItemUpdate(@ModelAttribute("todolistitem") TodoListItem todoListItem, @PathVariable Long id, @PathVariable Long itemid){
+	@PostMapping(path = "/todolistitems/{itemid}")
+	public ResponseEntity todoListsPostItemUpdate(@ModelAttribute("todolistitem") TodoListItem todoListItem, @PathVariable Long itemid){
 
-		TodoListItem updateTodoListItem = ofy().load().type(TodoListItem.class).id(todoListItem.getId()).now();
+		TodoListItem updateTodoListItem = ofy().load().type(TodoListItem.class).id(itemid).now();
 
 		updateTodoListItem.setDescription(todoListItem.getDescription());
 		updateTodoListItem.setName(todoListItem.getName());
@@ -110,12 +116,25 @@ public class TodoListController {
 		return new ResponseEntity(updateTodoListItem, HttpStatus.OK);
 	}
 
-	@DeleteMapping(path = "/todolists/{id}")
-	public ResponseEntity todoListsDeleteItem(@PathVariable Long id){
+	@DeleteMapping(path = "/todolistitems/{itemid}")
+	public ResponseEntity todoListsDeleteItem(@PathVariable Long itemid){
 
-		System.out.println("TodolistItem Delete, id:" + id);
-		TodoListItem deleteTodoListItem = ofy().load().type(TodoListItem.class).id(id).now();
+		TodoListItem deleteTodoListItem = ofy().load().type(TodoListItem.class).id(itemid).now();
 		ofy().delete().entity(deleteTodoListItem).now();
+
+		return new ResponseEntity(HttpStatus.NO_CONTENT);
+	}
+
+	@PostMapping(path = "/itemstatus/{itemid}/{status}")
+	public ResponseEntity todoListItemStatus(@PathVariable("itemid") Long itemid, @PathVariable("status") int status){
+
+		boolean val = false;
+		if (status > 0){ val = true; }
+
+		System.out.println(String.valueOf(status)+ " " + String.valueOf(itemid));
+		TodoListItem tdli = ofy().load().type(TodoListItem.class).id(itemid).now();
+		tdli.setCompleted(val);
+		ofy().save().entity(tdli).now();
 
 		return new ResponseEntity(HttpStatus.NO_CONTENT);
 	}

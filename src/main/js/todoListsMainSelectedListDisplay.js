@@ -33,24 +33,24 @@ class TodoListsMainSelectedListDisplay extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            open: false,
+            openUpdate: false,
             response: null,
             name: this.props.selectedTodoList.name,
-            description: this.props.selectedTodoList.description
+            description: this.props.selectedTodoList.description,
         };
     }
 
-    handleClickOpen = () => {
+    handleClickOpenUpdate = () => {
         this.setState({
-            open: true
+            openUpdate: true
         });
         this.setState({name: this.props.selectedTodoList.name});
         this.setState({description: this.props.selectedTodoList.description});
     };
 
-    handleAddClose = () => {
+    handleUpdateClose = () => {
         this.setState({
-            open: false
+            openUpdate: false
         });
     };
 
@@ -71,7 +71,7 @@ class TodoListsMainSelectedListDisplay extends React.Component {
             })
             .then(response => response.json())
             .then(data => {
-                this.handleAddClose();
+                this.handleUpdateClose();
                 this.props.callbackUpdateCurrentTodoList(data);
                 this.props.updateCurrentTodo(data.id);
                 this.props.setReload(true);
@@ -106,22 +106,6 @@ class TodoListsMainSelectedListDisplay extends React.Component {
         this.props.updateCurrentTodo(null);
     }
 
-    onNameInputChange = (event) => {
-        if (event.target.value) {
-            this.setState({name: event.target.value})
-        } else {
-            this.setState({name: ''})
-        }
-    }
-
-    onDescriptionInputChange = (event) => {
-        if (event.target.value) {
-            this.setState({description: event.target.value})
-        } else {
-            this.setState({description: ''})
-        }
-    }
-
     render() {
         const { classes } = this.props;
         if (this.props.selectedTodoList == null) {
@@ -138,11 +122,12 @@ class TodoListsMainSelectedListDisplay extends React.Component {
                         </Typography>
                     </CardContent>
                     <CardActions>
-                        <Button size="small" >Add Task</Button>
                         <Button size="small" >Share</Button>
-                        <Button size="small" onClick={this.handleClickOpen}>Edit</Button>
+                        <Button size="small" onClick={this.handleClickOpenUpdate}>Edit</Button>
                         <Button size="small" onClick={() => this.deleteItem(this.props.selectedTodoList.id)}>Delete</Button>
-                        <Dialog open={this.state.open} onClose={this.handleAddClose} aria-labelledby="form-dialog-title" >
+
+                        {/* DIALOG FOR UPDATING LIST */}
+                        <Dialog open={this.state.openUpdate} onClose={this.handleUpdateClose} aria-labelledby="form-dialog-title" >
                             <DialogTitle id="form-dialog-title">Update Todo List</DialogTitle>
                             <DialogContent>
                                 <DialogContentText>
@@ -168,10 +153,11 @@ class TodoListsMainSelectedListDisplay extends React.Component {
                                 />
                             </DialogContent>
                             <DialogActions>
-                                <Button onClick={this.handleAddClose} color="primary">Cancel</Button>
+                                <Button onClick={this.handleUpdateClose} color="primary">Cancel</Button>
                                 <Button onClick={() => this.handleUpdate()} color="primary">Update</Button>
                             </DialogActions>
                     </Dialog>
+
                     </CardActions>
                 </Card>
             );
