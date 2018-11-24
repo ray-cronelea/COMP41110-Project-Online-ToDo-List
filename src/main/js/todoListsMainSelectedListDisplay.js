@@ -11,6 +11,11 @@ import DialogContentText from "@material-ui/core/DialogContentText/DialogContent
 import TextField from "@material-ui/core/TextField/TextField";
 import DialogActions from "@material-ui/core/DialogActions/DialogActions";
 import Dialog from "@material-ui/core/Dialog/Dialog";
+import ShareIcon from '@material-ui/icons/Share';
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
+import FormControlLabel from "@material-ui/core/FormControlLabel/FormControlLabel";
+import Switch from "@material-ui/core/Switch/Switch";
 
 const styles = {
     card: {
@@ -34,6 +39,7 @@ class TodoListsMainSelectedListDisplay extends React.Component {
         super(props);
         this.state = {
             openUpdate: false,
+            openShare: false,
             response: null,
             name: this.props.selectedTodoList.name,
             description: this.props.selectedTodoList.description,
@@ -106,6 +112,30 @@ class TodoListsMainSelectedListDisplay extends React.Component {
         this.props.updateCurrentTodo(null);
     }
 
+    handleClickOpenShare = () => {
+        this.setState({
+            openShare: true
+        });
+    };
+
+    handleShareClose = () => {
+        this.setState({
+            openShare: false
+        });
+    };
+    handleShareCheckboxChange = (event) => {
+
+        let currentid = this.props.selectedTodoList.id;
+        let val = 0;
+        this.props.selectedTodoList.isShared = event.target.checked;
+        if (event.target.checked === true){
+            val = 1;
+        }
+
+        fetch("/api/todolists/" + currentid + "/share/" + val.toString(),
+            {method: "POST"}).then(data => {})
+    };
+
     render() {
         const { classes } = this.props;
         if (this.props.selectedTodoList == null) {
@@ -117,48 +147,64 @@ class TodoListsMainSelectedListDisplay extends React.Component {
                         <Typography variant="h5" component="h2">
                             {this.props.selectedTodoList.name}
                         </Typography>
-                        <Typography component="p">
+                        <Typography variant="h6" component="h3">
                             {this.props.selectedTodoList.description}
                         </Typography>
                     </CardContent>
                     <CardActions>
-                        <Button size="small" >Share</Button>
-                        <Button size="small" onClick={this.handleClickOpenUpdate}>Edit</Button>
-                        <Button size="small" onClick={() => this.deleteItem(this.props.selectedTodoList.id)}>Delete</Button>
-
-                        {/* DIALOG FOR UPDATING LIST */}
-                        <Dialog open={this.state.openUpdate} onClose={this.handleUpdateClose} aria-labelledby="form-dialog-title" >
-                            <DialogTitle id="form-dialog-title">Update Todo List</DialogTitle>
-                            <DialogContent>
-                                <DialogContentText>
-                                    Enter the name and description to update this todo list.
-                                </DialogContentText>
-                                <TextField
-                                    margin="dense"
-                                    id="name"
-                                    value={this.state.name}
-                                    onChange={this.onNameInputChange}
-                                    label="Name"
-                                    type="text"
-                                    fullWidth
-                                />
-                                <TextField
-                                    margin="dense"
-                                    id="description"
-                                    value={this.state.description}
-                                    onChange={this.onDescriptionInputChange}
-                                    label="Description"
-                                    type="text"
-                                    fullWidth
-                                />
-                            </DialogContent>
-                            <DialogActions>
-                                <Button onClick={this.handleUpdateClose} color="primary">Cancel</Button>
-                                <Button onClick={() => this.handleUpdate()} color="primary">Update</Button>
-                            </DialogActions>
+                        <Button size="small" onClick={this.handleClickOpenShare}><ShareIcon/></Button>
+                        <Button size="small" onClick={this.handleClickOpenUpdate}><EditIcon/></Button>
+                        <Button size="small" onClick={() => this.deleteItem(this.props.selectedTodoList.id)}><DeleteIcon/></Button>
+                    </CardActions>
+                    {/* DIALOG FOR UPDATING LIST */}
+                    <Dialog open={this.state.openUpdate} onClose={this.handleUpdateClose} aria-labelledby="form-dialog-title" >
+                        <DialogTitle id="form-dialog-title">Update Todo List</DialogTitle>
+                        <DialogContent>
+                            <DialogContentText>
+                                Enter the name and description to update this todo list.
+                            </DialogContentText>
+                            <TextField
+                                margin="dense"
+                                id="name"
+                                value={this.state.name}
+                                onChange={this.onNameInputChange}
+                                label="Name"
+                                type="text"
+                                fullWidth
+                            />
+                            <TextField
+                                margin="dense"
+                                id="description"
+                                value={this.state.description}
+                                onChange={this.onDescriptionInputChange}
+                                label="Description"
+                                type="text"
+                                fullWidth
+                            />
+                        </DialogContent>
+                        <DialogActions>
+                            <Button onClick={this.handleUpdateClose} color="primary">Cancel</Button>
+                            <Button onClick={() => this.handleUpdate()} color="primary">Update</Button>
+                        </DialogActions>
                     </Dialog>
 
-                    </CardActions>
+                    {/* DIALOG FOR SHARING LIST */}
+                    <Dialog open={this.state.openShare} onClose={this.handleShareClose} aria-labelledby="alert-dialog-title" aria-describedby="alert-dialog-description">
+                        <DialogTitle id="alert-dialog-title">{"Share List"}</DialogTitle>
+                        <DialogContent>
+                            <DialogContentText>Set the list as shared and use the link to give somebody else read only access to the list.</DialogContentText>
+                        </DialogContent>
+                        <DialogContent>
+                            <FormControlLabel control={ <Switch defaultChecked={this.props.selectedTodoList.isShared} onChange={this.handleShareCheckboxChange}/>} label="Shared"/>
+                        </DialogContent>
+                        <DialogContent>
+                            <DialogContentText>https://todo.raywilson.ie/share/{this.props.selectedTodoList.shareId}</DialogContentText>
+                        </DialogContent>
+                        <DialogActions>
+                            <Button onClick={this.handleShareClose} color="primary">Close</Button>
+                        </DialogActions>
+                    </Dialog>
+
                 </Card>
             );
         }

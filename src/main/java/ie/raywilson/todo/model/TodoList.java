@@ -14,6 +14,8 @@ public class TodoList {
 	@Id Long id;
 	String name; // Can be Long, long, or String
 	String description;
+	@Index String shareId;
+	Boolean isShared;
 	@Index List<Key<Account>> accountKeys = new ArrayList<Key<Account>>();
 
 	public TodoList(){
@@ -36,6 +38,14 @@ public class TodoList {
 
 	public void setDescription(String description){ this.description = description; }
 
+	public String getShareId(){ return shareId; }
+
+	public void setShareId(String shareId){ this.shareId = shareId; }
+
+	public Boolean getIsShared(){ return isShared; }
+
+	public void setIsShared(Boolean isShared){ this.isShared = isShared; }
+
 	public void addAccount(Key<Account> userKey){
 		accountKeys.add(userKey);
 	}
@@ -44,5 +54,4 @@ public class TodoList {
 		Predicate<Key<Account>> userKeyPredicate = p-> p.getId() == accountKey.getId();
 		accountKeys.removeIf(userKeyPredicate);
 	}
-
 }

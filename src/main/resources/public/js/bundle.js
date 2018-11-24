@@ -34882,6 +34882,38 @@ exports.default = _default;
 
 /***/ }),
 
+/***/ "./node_modules/@material-ui/icons/Share.js":
+/*!**************************************************!*\
+  !*** ./node_modules/@material-ui/icons/Share.js ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@material-ui/icons/node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var _createSvgIcon = _interopRequireDefault(__webpack_require__(/*! ./utils/createSvgIcon */ "./node_modules/@material-ui/icons/utils/createSvgIcon.js"));
+
+var _default = (0, _createSvgIcon.default)(_react.default.createElement(_react.default.Fragment, null, _react.default.createElement("path", {
+  fill: "none",
+  d: "M0 0h24v24H0z"
+}), _react.default.createElement("path", {
+  d: "M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"
+})), 'Share');
+
+exports.default = _default;
+
+/***/ }),
+
 /***/ "./node_modules/@material-ui/icons/node_modules/@babel/runtime/helpers/inheritsLoose.js":
 /*!**********************************************************************************************!*\
   !*** ./node_modules/@material-ui/icons/node_modules/@babel/runtime/helpers/inheritsLoose.js ***!
@@ -69378,6 +69410,8 @@ module.exports = function(originalModule) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _container__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./container */ "./src/main/js/container.js");
+/* harmony import */ var _share__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./share */ "./src/main/js/share.js");
+/* harmony import */ var _shareError__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./shareError */ "./src/main/js/shareError.js");
 
 
 var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
@@ -69385,7 +69419,26 @@ var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 var ReactDOM = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 
 
-ReactDOM.render(React.createElement(_container__WEBPACK_IMPORTED_MODULE_0__["default"], null), document.getElementById('root'));
+
+
+
+if (document.getElementById('root') !== null) {
+  ReactDOM.render(React.createElement(_container__WEBPACK_IMPORTED_MODULE_0__["default"], null), document.getElementById('root'));
+} else {
+  console.log("Element root has not been found.");
+}
+
+if (document.getElementById('shareError') !== null) {
+  ReactDOM.render(React.createElement(_shareError__WEBPACK_IMPORTED_MODULE_2__["default"], null), document.getElementById('shareError'));
+} else {
+  console.log("Element shareError has not been found.");
+}
+
+if (document.getElementById('share') !== null) {
+  ReactDOM.render(React.createElement(_share__WEBPACK_IMPORTED_MODULE_1__["default"], null), document.getElementById('share'));
+} else {
+  console.log("Element share has not been found.");
+}
 
 /***/ }),
 
@@ -69663,6 +69716,254 @@ ClippedDrawer.propTypes = {
   classes: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.object.isRequired
 };
 /* harmony default export */ __webpack_exports__["default"] = (Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_2__["withStyles"])(styles)(ClippedDrawer));
+
+/***/ }),
+
+/***/ "./src/main/js/share.js":
+/*!******************************!*\
+  !*** ./src/main/js/share.js ***!
+  \******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material-ui/core/styles */ "./node_modules/@material-ui/core/styles/index.js");
+/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _material_ui_core_CardContent_CardContent__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/core/CardContent/CardContent */ "./node_modules/@material-ui/core/CardContent/CardContent.js");
+/* harmony import */ var _material_ui_core_CardContent_CardContent__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_CardContent_CardContent__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _material_ui_core_Typography_Typography__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/core/Typography/Typography */ "./node_modules/@material-ui/core/Typography/Typography.js");
+/* harmony import */ var _material_ui_core_Typography_Typography__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Typography_Typography__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _material_ui_core_Card_Card__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/core/Card/Card */ "./node_modules/@material-ui/core/Card/Card.js");
+/* harmony import */ var _material_ui_core_Card_Card__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Card_Card__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _material_ui_core_Table_Table__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @material-ui/core/Table/Table */ "./node_modules/@material-ui/core/Table/Table.js");
+/* harmony import */ var _material_ui_core_Table_Table__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Table_Table__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _material_ui_core_TableHead_TableHead__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @material-ui/core/TableHead/TableHead */ "./node_modules/@material-ui/core/TableHead/TableHead.js");
+/* harmony import */ var _material_ui_core_TableHead_TableHead__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_TableHead_TableHead__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _material_ui_core_TableRow_TableRow__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/core/TableRow/TableRow */ "./node_modules/@material-ui/core/TableRow/TableRow.js");
+/* harmony import */ var _material_ui_core_TableRow_TableRow__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_TableRow_TableRow__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _material_ui_core_TableCell_TableCell__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @material-ui/core/TableCell/TableCell */ "./node_modules/@material-ui/core/TableCell/TableCell.js");
+/* harmony import */ var _material_ui_core_TableCell_TableCell__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_TableCell_TableCell__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _material_ui_core_TableBody_TableBody__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @material-ui/core/TableBody/TableBody */ "./node_modules/@material-ui/core/TableBody/TableBody.js");
+/* harmony import */ var _material_ui_core_TableBody_TableBody__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_TableBody_TableBody__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _material_ui_core_Checkbox_Checkbox__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @material-ui/core/Checkbox/Checkbox */ "./node_modules/@material-ui/core/Checkbox/Checkbox.js");
+/* harmony import */ var _material_ui_core_Checkbox_Checkbox__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Checkbox_Checkbox__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _material_ui_core_Paper_Paper__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @material-ui/core/Paper/Paper */ "./node_modules/@material-ui/core/Paper/Paper.js");
+/* harmony import */ var _material_ui_core_Paper_Paper__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Paper_Paper__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var _material_ui_core_Grid_Grid__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @material-ui/core/Grid/Grid */ "./node_modules/@material-ui/core/Grid/Grid.js");
+/* harmony import */ var _material_ui_core_Grid_Grid__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Grid_Grid__WEBPACK_IMPORTED_MODULE_13__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var styles = function styles(theme) {
+  return {
+    root: {
+      width: '100%',
+      marginTop: theme.spacing.unit * 3,
+      overflowX: 'auto',
+      minWidth: 275,
+      maxWidth: 900,
+      justify: "center"
+    },
+    card: {},
+    table: {
+      minWidth: 700,
+      tableLayout: 'auto'
+    },
+    tabbutton: {
+      'width': '5%'
+    }
+  };
+};
+
+var Share =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Share, _React$Component);
+
+  function Share(props) {
+    var _this;
+
+    _classCallCheck(this, Share);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Share).call(this, props));
+    _this.state = {};
+    return _this;
+  }
+
+  _createClass(Share, [{
+    key: "render",
+    value: function render() {
+      var classes = this.props.classes;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Grid_Grid__WEBPACK_IMPORTED_MODULE_13___default.a, {
+        container: true,
+        justify: "center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Paper_Paper__WEBPACK_IMPORTED_MODULE_12___default.a, {
+        className: classes.root
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Card_Card__WEBPACK_IMPORTED_MODULE_5___default.a, {
+        className: classes.card
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_CardContent_CardContent__WEBPACK_IMPORTED_MODULE_3___default.a, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Typography_Typography__WEBPACK_IMPORTED_MODULE_4___default.a, {
+        variant: "h5",
+        component: "h2"
+      }, "Name: ", TODO_LIST.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Typography_Typography__WEBPACK_IMPORTED_MODULE_4___default.a, {
+        variant: "h6",
+        component: "h3"
+      }, "Description: ", TODO_LIST.description))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Table_Table__WEBPACK_IMPORTED_MODULE_6___default.a, {
+        className: classes.table
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableHead_TableHead__WEBPACK_IMPORTED_MODULE_7___default.a, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableRow_TableRow__WEBPACK_IMPORTED_MODULE_8___default.a, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell_TableCell__WEBPACK_IMPORTED_MODULE_9___default.a, {
+        className: classes.tabbutton
+      }, "Done"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell_TableCell__WEBPACK_IMPORTED_MODULE_9___default.a, null, "Name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell_TableCell__WEBPACK_IMPORTED_MODULE_9___default.a, null, "Description"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell_TableCell__WEBPACK_IMPORTED_MODULE_9___default.a, null, "Date"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableBody_TableBody__WEBPACK_IMPORTED_MODULE_10___default.a, null, TODO_LIST_ITEMS.map(function (row) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableRow_TableRow__WEBPACK_IMPORTED_MODULE_8___default.a, {
+          key: row.id
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell_TableCell__WEBPACK_IMPORTED_MODULE_9___default.a, {
+          padding: "checkbox",
+          className: classes.tabbutton
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Checkbox_Checkbox__WEBPACK_IMPORTED_MODULE_11___default.a, {
+          checked: row.completed
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell_TableCell__WEBPACK_IMPORTED_MODULE_9___default.a, null, row.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell_TableCell__WEBPACK_IMPORTED_MODULE_9___default.a, null, row.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell_TableCell__WEBPACK_IMPORTED_MODULE_9___default.a, null, row.date));
+      })))));
+    }
+  }]);
+
+  return Share;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+Share.propTypes = {
+  classes: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.object.isRequired
+};
+/* harmony default export */ __webpack_exports__["default"] = (Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_2__["withStyles"])(styles)(Share));
+
+/***/ }),
+
+/***/ "./src/main/js/shareError.js":
+/*!***********************************!*\
+  !*** ./src/main/js/shareError.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material-ui/core/styles */ "./node_modules/@material-ui/core/styles/index.js");
+/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _material_ui_core_Grid_Grid__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/core/Grid/Grid */ "./node_modules/@material-ui/core/Grid/Grid.js");
+/* harmony import */ var _material_ui_core_Grid_Grid__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Grid_Grid__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _material_ui_core_CardContent_CardContent__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/core/CardContent/CardContent */ "./node_modules/@material-ui/core/CardContent/CardContent.js");
+/* harmony import */ var _material_ui_core_CardContent_CardContent__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_CardContent_CardContent__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _material_ui_core_Typography_Typography__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/core/Typography/Typography */ "./node_modules/@material-ui/core/Typography/Typography.js");
+/* harmony import */ var _material_ui_core_Typography_Typography__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Typography_Typography__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _material_ui_core_Card_Card__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @material-ui/core/Card/Card */ "./node_modules/@material-ui/core/Card/Card.js");
+/* harmony import */ var _material_ui_core_Card_Card__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Card_Card__WEBPACK_IMPORTED_MODULE_6__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+
+
+
+var styles = function styles(theme) {
+  return {};
+};
+
+var ShareError =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(ShareError, _React$Component);
+
+  function ShareError(props) {
+    var _this;
+
+    _classCallCheck(this, ShareError);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ShareError).call(this, props));
+    _this.state = {};
+    return _this;
+  }
+
+  _createClass(ShareError, [{
+    key: "render",
+    value: function render() {
+      var classes = this.props.classes;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Grid_Grid__WEBPACK_IMPORTED_MODULE_3___default.a, {
+        container: true,
+        justify: "center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Card_Card__WEBPACK_IMPORTED_MODULE_6___default.a, {
+        className: classes.card
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_CardContent_CardContent__WEBPACK_IMPORTED_MODULE_4___default.a, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Typography_Typography__WEBPACK_IMPORTED_MODULE_5___default.a, {
+        className: classes.title,
+        color: "textSecondary",
+        gutterBottom: true
+      }, "COMP41110 Cloud Todo List"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Typography_Typography__WEBPACK_IMPORTED_MODULE_5___default.a, {
+        variant: "h5",
+        component: "h2"
+      }, ERROR_MESSAGE))));
+    }
+  }]);
+
+  return ShareError;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+ShareError.propTypes = {
+  classes: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.object.isRequired
+};
+/* harmony default export */ __webpack_exports__["default"] = (Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_2__["withStyles"])(styles)(ShareError));
 
 /***/ }),
 
@@ -70519,7 +70820,6 @@ function (_React$Component) {
       }, "Done"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, null, "Name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, null, "Description"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, null, "Date"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, {
         className: classes.tabbutton
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button_Button__WEBPACK_IMPORTED_MODULE_10___default.a, {
-        color: "primary",
         onClick: this.handleClickOpenAddItem
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_icons_Add__WEBPACK_IMPORTED_MODULE_17___default.a, null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, {
         className: classes.tabbutton
@@ -70537,14 +70837,12 @@ function (_React$Component) {
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, null, row.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, null, row.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, null, row.date), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, {
           className: classes.tabbutton
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button_Button__WEBPACK_IMPORTED_MODULE_10___default.a, {
-          color: "primary",
           onClick: function onClick(e) {
             return _this2.handleClickOpenEditItem(row.id, row.name, row.date, row.description);
           }
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_icons_Edit__WEBPACK_IMPORTED_MODULE_19___default.a, null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, {
           className: classes.tabbutton
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button_Button__WEBPACK_IMPORTED_MODULE_10___default.a, {
-          color: "primary",
           onClick: function onClick(e) {
             return _this2.handleDelete(e, row.id);
           }
@@ -70689,6 +70987,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_core_DialogActions_DialogActions__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_DialogActions_DialogActions__WEBPACK_IMPORTED_MODULE_11__);
 /* harmony import */ var _material_ui_core_Dialog_Dialog__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @material-ui/core/Dialog/Dialog */ "./node_modules/@material-ui/core/Dialog/Dialog.js");
 /* harmony import */ var _material_ui_core_Dialog_Dialog__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Dialog_Dialog__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var _material_ui_icons_Share__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @material-ui/icons/Share */ "./node_modules/@material-ui/icons/Share.js");
+/* harmony import */ var _material_ui_icons_Share__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Share__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var _material_ui_icons_Edit__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @material-ui/icons/Edit */ "./node_modules/@material-ui/icons/Edit.js");
+/* harmony import */ var _material_ui_icons_Edit__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Edit__WEBPACK_IMPORTED_MODULE_14__);
+/* harmony import */ var _material_ui_icons_Delete__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @material-ui/icons/Delete */ "./node_modules/@material-ui/icons/Delete.js");
+/* harmony import */ var _material_ui_icons_Delete__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Delete__WEBPACK_IMPORTED_MODULE_15__);
+/* harmony import */ var _material_ui_core_FormControlLabel_FormControlLabel__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @material-ui/core/FormControlLabel/FormControlLabel */ "./node_modules/@material-ui/core/FormControlLabel/FormControlLabel.js");
+/* harmony import */ var _material_ui_core_FormControlLabel_FormControlLabel__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_FormControlLabel_FormControlLabel__WEBPACK_IMPORTED_MODULE_16__);
+/* harmony import */ var _material_ui_core_Switch_Switch__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @material-ui/core/Switch/Switch */ "./node_modules/@material-ui/core/Switch/Switch.js");
+/* harmony import */ var _material_ui_core_Switch_Switch__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Switch_Switch__WEBPACK_IMPORTED_MODULE_17__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -70708,6 +71016,11 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
 
 
 
@@ -70818,8 +71131,35 @@ function (_React$Component) {
       }
     });
 
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleClickOpenShare", function () {
+      _this.setState({
+        openShare: true
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleShareClose", function () {
+      _this.setState({
+        openShare: false
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleShareCheckboxChange", function (event) {
+      var currentid = _this.props.selectedTodoList.id;
+      var val = 0;
+      _this.props.selectedTodoList.isShared = event.target.checked;
+
+      if (event.target.checked === true) {
+        val = 1;
+      }
+
+      fetch("/api/todolists/" + currentid + "/share/" + val.toString(), {
+        method: "POST"
+      }).then(function (data) {});
+    });
+
     _this.state = {
       openUpdate: false,
+      openShare: false,
       response: null,
       name: _this.props.selectedTodoList.name,
       description: _this.props.selectedTodoList.description
@@ -70861,18 +71201,20 @@ function (_React$Component) {
           variant: "h5",
           component: "h2"
         }, this.props.selectedTodoList.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_6___default.a, {
-          component: "p"
+          variant: "h6",
+          component: "h3"
         }, this.props.selectedTodoList.description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_CardActions__WEBPACK_IMPORTED_MODULE_3___default.a, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_5___default.a, {
-          size: "small"
-        }, "Share"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_5___default.a, {
+          size: "small",
+          onClick: this.handleClickOpenShare
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_icons_Share__WEBPACK_IMPORTED_MODULE_13___default.a, null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_5___default.a, {
           size: "small",
           onClick: this.handleClickOpenUpdate
-        }, "Edit"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_5___default.a, {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_icons_Edit__WEBPACK_IMPORTED_MODULE_14___default.a, null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_5___default.a, {
           size: "small",
           onClick: function onClick() {
             return _this3.deleteItem(_this3.props.selectedTodoList.id);
           }
-        }, "Delete"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Dialog_Dialog__WEBPACK_IMPORTED_MODULE_12___default.a, {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_icons_Delete__WEBPACK_IMPORTED_MODULE_15___default.a, null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Dialog_Dialog__WEBPACK_IMPORTED_MODULE_12___default.a, {
           open: this.state.openUpdate,
           onClose: this.handleUpdateClose,
           "aria-labelledby": "form-dialog-title"
@@ -70902,7 +71244,23 @@ function (_React$Component) {
             return _this3.handleUpdate();
           },
           color: "primary"
-        }, "Update")))));
+        }, "Update"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Dialog_Dialog__WEBPACK_IMPORTED_MODULE_12___default.a, {
+          open: this.state.openShare,
+          onClose: this.handleShareClose,
+          "aria-labelledby": "alert-dialog-title",
+          "aria-describedby": "alert-dialog-description"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_DialogTitle_DialogTitle__WEBPACK_IMPORTED_MODULE_7___default.a, {
+          id: "alert-dialog-title"
+        }, "Share List"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_DialogContent_DialogContent__WEBPACK_IMPORTED_MODULE_8___default.a, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_DialogContentText_DialogContentText__WEBPACK_IMPORTED_MODULE_9___default.a, null, "Set the list as shared and use the link to give somebody else read only access to the list.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_DialogContent_DialogContent__WEBPACK_IMPORTED_MODULE_8___default.a, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_FormControlLabel_FormControlLabel__WEBPACK_IMPORTED_MODULE_16___default.a, {
+          control: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Switch_Switch__WEBPACK_IMPORTED_MODULE_17___default.a, {
+            defaultChecked: this.props.selectedTodoList.isShared,
+            onChange: this.handleShareCheckboxChange
+          }),
+          label: "Shared"
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_DialogContent_DialogContent__WEBPACK_IMPORTED_MODULE_8___default.a, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_DialogContentText_DialogContentText__WEBPACK_IMPORTED_MODULE_9___default.a, null, "https://todo.raywilson.ie/share/", this.props.selectedTodoList.shareId)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_DialogActions_DialogActions__WEBPACK_IMPORTED_MODULE_11___default.a, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_5___default.a, {
+          onClick: this.handleShareClose,
+          color: "primary"
+        }, "Close"))));
       }
     }
   }]);

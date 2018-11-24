@@ -5,14 +5,9 @@
     <title>COMP41110 Cloud Todo List</title>
     <link rel="stylesheet" href="/css/app.css" />
 </head>
-    <body>
-
-        <div id="root"></div>
-
-        <script th:inline="javascript">
-            let LOGOUT_URL = /*[[${logoutURL}]]*/ 'NA';
-        </script>
-        <script src="/js/bundle.js"></script>
-
-    </body>
+    <div id="shareError"></div>
+    <script th:inline="javascript">
+        let ERROR_MESSAGE = /*[[${errorMessage}]]*/ 'NA';
+    </script>
+    <script src="/js/bundle.js"></script>
 </html>

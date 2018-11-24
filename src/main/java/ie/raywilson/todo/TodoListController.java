@@ -3,11 +3,10 @@ package ie.raywilson.todo;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.google.appengine.api.users.User;
 import com.googlecode.objectify.Key;
-import com.googlecode.objectify.Ref;
-import com.googlecode.objectify.cmd.Query;
 import ie.raywilson.todo.model.Account;
 import ie.raywilson.todo.model.TodoList;
 import ie.raywilson.todo.model.TodoListItem;
+import org.apache.commons.lang.RandomStringUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -46,6 +45,8 @@ public class TodoListController {
 		Account currentAccount = ofy().load().type(Account.class).filter("userId", currentUser.getUserId()).first().now();
 		Key<Account> accountKey = Key.create(Account.class, currentAccount.getId());
 		todoList.addAccount(accountKey);
+		todoList.setIsShared(false);
+		todoList.setShareId(RandomStringUtils.random(10, true, true));
 		ofy().save().entity(todoList).now();
 
 		return new ResponseEntity(todoList, HttpStatus.OK);
@@ -60,6 +61,19 @@ public class TodoListController {
 		ofy().save().entity(updateTodoList).now();
 
 		return new ResponseEntity(todoList, HttpStatus.OK);
+	}
+
+	@PostMapping(path = "/todolists/{id}/share/{status}")
+	public ResponseEntity todoListItemShareUpdate(@PathVariable("id") Long id, @PathVariable("status") int status){
+
+		boolean val = false;
+		if (status > 0){ val = true; }
+
+		TodoList tdl = ofy().load().type(TodoList.class).id(id).now();
+		tdl.setIsShared(val);
+		ofy().save().entity(tdl).now();
+
+		return new ResponseEntity(HttpStatus.NO_CONTENT);
 	}
 
 	@DeleteMapping(path = "/todolists/{id}")

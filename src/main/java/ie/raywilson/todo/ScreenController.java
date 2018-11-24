@@ -3,10 +3,17 @@ package ie.raywilson.todo;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
+import com.google.common.collect.Lists;
+import com.googlecode.objectify.Key;
 import ie.raywilson.todo.model.Account;
+import ie.raywilson.todo.model.TodoList;
+import ie.raywilson.todo.model.TodoListItem;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import java.util.List;
 
 import static com.googlecode.objectify.ObjectifyService.ofy;
 
@@ -50,6 +57,29 @@ public class ScreenController {
 		model.addAttribute("userEmail", currentUser.getEmail());
 		model.addAttribute("logoutURL", logoutURL);
 		return "app";
+	}
+
+	@GetMapping("/share/{shareid}")
+	public String loginPage(Model model, @PathVariable("shareid") String shareid) {
+
+		TodoList tdl = ofy().load().type(TodoList.class).filter("shareId", shareid).first().now();
+
+		if (tdl != null) {
+			if (tdl.getIsShared()) {
+				List<TodoListItem> tdli = Lists.newArrayList(ofy().load().type(TodoListItem.class).filter("listKeys", tdl));
+
+				model.addAttribute("todoList", tdl);
+				model.addAttribute("todoListItems", tdli);
+				//model.addAttribute("todoListOwner", email);
+				return "share";
+			} else {
+				model.addAttribute("errorMessage", "This list is not available for view.");
+				return "share-error";
+			}
+		} else {
+			model.addAttribute("errorMessage", "No list exists for this link!");
+			return "share-error";
+		}
 	}
 
 }

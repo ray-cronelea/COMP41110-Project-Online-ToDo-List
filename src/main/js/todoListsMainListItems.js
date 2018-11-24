@@ -255,7 +255,7 @@ class TodoListsMainListItems extends React.Component {
                             <TableCell>Name</TableCell>
                             <TableCell>Description</TableCell>
                             <TableCell>Date</TableCell>
-                            <TableCell className={classes.tabbutton}><Button color="primary" onClick={this.handleClickOpenAddItem}><AddIcon /></Button></TableCell>
+                            <TableCell className={classes.tabbutton}><Button onClick={this.handleClickOpenAddItem}><AddIcon /></Button></TableCell>
                             <TableCell className={classes.tabbutton}/>
                         </TableRow>
                     </TableHead>
@@ -269,8 +269,8 @@ class TodoListsMainListItems extends React.Component {
                                     <TableCell>{row.name}</TableCell>
                                     <TableCell>{row.description}</TableCell>
                                     <TableCell>{row.date}</TableCell>
-                                    <TableCell className={classes.tabbutton}><Button color="primary" onClick={(e) => this.handleClickOpenEditItem(row.id,row.name,row.date,row.description)}><EditIcon/></Button></TableCell>
-                                    <TableCell className={classes.tabbutton}><Button color="primary" onClick={(e) => this.handleDelete(e,row.id)}><DeleteIcon/></Button></TableCell>
+                                    <TableCell className={classes.tabbutton}><Button onClick={(e) => this.handleClickOpenEditItem(row.id,row.name,row.date,row.description)}><EditIcon/></Button></TableCell>
+                                    <TableCell className={classes.tabbutton}><Button onClick={(e) => this.handleDelete(e,row.id)}><DeleteIcon/></Button></TableCell>
                                 </TableRow>
                             );
                         })}
