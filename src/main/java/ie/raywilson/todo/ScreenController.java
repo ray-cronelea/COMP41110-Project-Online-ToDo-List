@@ -60,7 +60,7 @@ public class ScreenController {
 	}
 
 	@GetMapping("/share/{shareid}")
-	public String loginPage(Model model, @PathVariable("shareid") String shareid) {
+	public String sharePage(Model model, @PathVariable("shareid") String shareid) {
 
 		TodoList tdl = ofy().load().type(TodoList.class).filter("shareId", shareid).first().now();
 
@@ -80,6 +80,19 @@ public class ScreenController {
 			model.addAttribute("errorMessage", "No list exists for this link!");
 			return "share-error";
 		}
+	}
+	@GetMapping("app/search")
+	public String searchPage(Model model) {
+
+		UserService userService = UserServiceFactory.getUserService();
+		String logoutURL = userService.createLogoutURL("/");
+		User currentUser = userService.getCurrentUser();
+
+		Account currentAccount = ofy().load().type(Account.class).filter("userId", currentUser.getUserId()).first().now();
+
+		model.addAttribute("userEmail", currentUser.getEmail());
+		model.addAttribute("logoutURL", logoutURL);
+		return "search";
 	}
 
 }

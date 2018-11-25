@@ -58,7 +58,7 @@ class Share extends React.Component{
                         <TableCell className={classes.tabbutton}>Done</TableCell>
                         <TableCell>Name</TableCell>
                         <TableCell>Description</TableCell>
-                        <TableCell>Date</TableCell>
+                        <TableCell>Time Slot</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>

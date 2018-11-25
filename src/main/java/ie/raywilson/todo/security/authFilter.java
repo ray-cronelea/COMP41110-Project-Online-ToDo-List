@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
-@WebFilter(filterName = "TimeOfDayFilter", urlPatterns = {"/todo/*","/app"})
+@WebFilter(filterName = "authFilter", urlPatterns = {"/api/*","/app","/search"})
 public class authFilter implements Filter {
 
 	@Override

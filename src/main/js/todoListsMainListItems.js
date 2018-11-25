@@ -254,7 +254,7 @@ class TodoListsMainListItems extends React.Component {
                             <TableCell className={classes.tabbutton}>Done</TableCell>
                             <TableCell>Name</TableCell>
                             <TableCell>Description</TableCell>
-                            <TableCell>Date</TableCell>
+                            <TableCell>Time Slot</TableCell>
                             <TableCell className={classes.tabbutton}><Button onClick={this.handleClickOpenAddItem}><AddIcon /></Button></TableCell>
                             <TableCell className={classes.tabbutton}/>
                         </TableRow>
@@ -313,7 +313,7 @@ class TodoListsMainListItems extends React.Component {
                             InputLabelProps={{
                                 shrink: true,
                             }}
-                            label="Date"
+                            label="Time Slot"
                             type="date"
                             fullWidth
                         />
@@ -359,14 +359,14 @@ class TodoListsMainListItems extends React.Component {
                             value={this.state.editDate}
                             onChange={this.onEditDateInputChange}
                             InputLabelProps={{shrink: true,}}
-                            label="Date"
+                            label="Time Slot"
                             type="date"
                             fullWidth
                         />
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={this.handleEditItemClose} color="primary">Cancel</Button>
-                        <Button onClick={() => this.handleEditItem()} color="primary">Add</Button>
+                        <Button onClick={() => this.handleEditItem()} color="primary">Update</Button>
                     </DialogActions>
                 </Dialog>
 
