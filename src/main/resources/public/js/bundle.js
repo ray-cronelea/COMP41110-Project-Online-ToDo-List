@@ -69830,13 +69830,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _todoListsMainContainer__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./todoListsMainContainer */ "./src/main/js/todoListsMainContainer.js");
 /* harmony import */ var _todoListsAddButton__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./todoListsAddButton */ "./src/main/js/todoListsAddButton.js");
 /* harmony import */ var _buttonLogout__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./buttonLogout */ "./src/main/js/buttonLogout.js");
-/* harmony import */ var _material_ui_core_Button_Button__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @material-ui/core/Button/Button */ "./node_modules/@material-ui/core/Button/Button.js");
-/* harmony import */ var _material_ui_core_Button_Button__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Button_Button__WEBPACK_IMPORTED_MODULE_17__);
-/* harmony import */ var _material_ui_icons_Search__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @material-ui/icons/Search */ "./node_modules/@material-ui/icons/Search.js");
-/* harmony import */ var _material_ui_icons_Search__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Search__WEBPACK_IMPORTED_MODULE_18__);
-/* harmony import */ var _material_ui_core_InputBase_InputBase__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @material-ui/core/InputBase/InputBase */ "./node_modules/@material-ui/core/InputBase/InputBase.js");
-/* harmony import */ var _material_ui_core_InputBase_InputBase__WEBPACK_IMPORTED_MODULE_19___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_InputBase_InputBase__WEBPACK_IMPORTED_MODULE_19__);
-/* harmony import */ var _material_ui_core_es_styles_colorManipulator__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @material-ui/core/es/styles/colorManipulator */ "./node_modules/@material-ui/core/es/styles/colorManipulator.js");
+/* harmony import */ var _material_ui_icons_Search__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @material-ui/icons/Search */ "./node_modules/@material-ui/icons/Search.js");
+/* harmony import */ var _material_ui_icons_Search__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Search__WEBPACK_IMPORTED_MODULE_17__);
+/* harmony import */ var _material_ui_core_InputBase_InputBase__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @material-ui/core/InputBase/InputBase */ "./node_modules/@material-ui/core/InputBase/InputBase.js");
+/* harmony import */ var _material_ui_core_InputBase_InputBase__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_InputBase_InputBase__WEBPACK_IMPORTED_MODULE_18__);
+/* harmony import */ var _material_ui_core_es_styles_colorManipulator__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @material-ui/core/es/styles/colorManipulator */ "./node_modules/@material-ui/core/es/styles/colorManipulator.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -69856,7 +69854,6 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 
@@ -69906,9 +69903,9 @@ var styles = function styles(theme) {
     search: _defineProperty({
       position: 'relative',
       borderRadius: theme.shape.borderRadius,
-      backgroundColor: Object(_material_ui_core_es_styles_colorManipulator__WEBPACK_IMPORTED_MODULE_20__["fade"])(theme.palette.common.black, 0.1),
+      backgroundColor: Object(_material_ui_core_es_styles_colorManipulator__WEBPACK_IMPORTED_MODULE_19__["fade"])(theme.palette.common.black, 0.1),
       '&:hover': {
-        backgroundColor: Object(_material_ui_core_es_styles_colorManipulator__WEBPACK_IMPORTED_MODULE_20__["fade"])(theme.palette.common.black, 0.1)
+        backgroundColor: Object(_material_ui_core_es_styles_colorManipulator__WEBPACK_IMPORTED_MODULE_19__["fade"])(theme.palette.common.black, 0.1)
       },
       marginRight: theme.spacing.unit * 2,
       marginLeft: 0,
@@ -70054,7 +70051,7 @@ function (_React$Component) {
         className: classes.search
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: classes.searchIcon
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_icons_Search__WEBPACK_IMPORTED_MODULE_18___default.a, null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_InputBase_InputBase__WEBPACK_IMPORTED_MODULE_19___default.a, {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_icons_Search__WEBPACK_IMPORTED_MODULE_17___default.a, null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_InputBase_InputBase__WEBPACK_IMPORTED_MODULE_18___default.a, {
         placeholder: "Search\u2026",
         value: this.props.searchTerm,
         onChange: this.onSearchTermChange,
@@ -70896,6 +70893,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_icons_Delete__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Delete__WEBPACK_IMPORTED_MODULE_18__);
 /* harmony import */ var _material_ui_icons_Edit__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @material-ui/icons/Edit */ "./node_modules/@material-ui/icons/Edit.js");
 /* harmony import */ var _material_ui_icons_Edit__WEBPACK_IMPORTED_MODULE_19___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Edit__WEBPACK_IMPORTED_MODULE_19__);
+/* harmony import */ var _material_ui_core_CardActions_CardActions__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @material-ui/core/CardActions/CardActions */ "./node_modules/@material-ui/core/CardActions/CardActions.js");
+/* harmony import */ var _material_ui_core_CardActions_CardActions__WEBPACK_IMPORTED_MODULE_20___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_CardActions_CardActions__WEBPACK_IMPORTED_MODULE_20__);
+/* harmony import */ var _material_ui_core_Card_Card__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @material-ui/core/Card/Card */ "./node_modules/@material-ui/core/Card/Card.js");
+/* harmony import */ var _material_ui_core_Card_Card__WEBPACK_IMPORTED_MODULE_21___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Card_Card__WEBPACK_IMPORTED_MODULE_21__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -70915,6 +70916,8 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
 
 
 
@@ -71023,11 +71026,13 @@ function (_React$Component) {
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleClickOpenAddItem", function () {
+      var todayDate = new Date().toISOString().slice(0, 10);
+
       _this.setState({
         openAddItem: true,
         addName: "",
         addDescription: "",
-        addDate: ""
+        addDate: todayDate
       });
     });
 
@@ -71075,14 +71080,29 @@ function (_React$Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleDelete", function (event, numid) {
-      console.log("Delete: " + numid.toString());
-      fetch("/api/todolistitems/" + numid.toString(), {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleClickOpenDelete", function (rowId) {
+      _this.setState({
+        openDelete: true,
+        rowDelete: rowId
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleDeleteClose", function () {
+      _this.setState({
+        openDelete: false
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleDelete", function (event) {
+      console.log("Delete: " + _this.state.rowDelete.toString());
+      fetch("/api/todolistitems/" + _this.state.rowDelete.toString(), {
         method: "DELETE"
       }).then(function (res) {
         return res.text();
       }).then(function (res) {
-        return _this.updateItems();
+        _this.updateItems();
+
+        _this.handleDeleteClose();
       });
     });
 
@@ -71162,6 +71182,8 @@ function (_React$Component) {
     _this.state = {
       isLoaded: false,
       openAddItem: false,
+      openDelete: false,
+      rowDelete: 0,
       itemData: [],
       addName: "",
       addDescription: "",
@@ -71229,10 +71251,28 @@ function (_React$Component) {
           className: classes.tabbutton
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button_Button__WEBPACK_IMPORTED_MODULE_10___default.a, {
           onClick: function onClick(e) {
-            return _this2.handleDelete(e, row.id);
+            return _this2.handleClickOpenDelete(row.id);
           }
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_icons_Delete__WEBPACK_IMPORTED_MODULE_18___default.a, null))));
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Dialog_Dialog__WEBPACK_IMPORTED_MODULE_11___default.a, {
+        open: this.state.openDelete,
+        onClose: this.handleDeleteClose,
+        "aria-labelledby": "alert-dialog-title",
+        "aria-describedby": "alert-dialog-description"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_DialogTitle_DialogTitle__WEBPACK_IMPORTED_MODULE_12___default.a, {
+        id: "alert-dialog-title"
+      }, "Are you sure you want to delete this item?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_DialogContent_DialogContent__WEBPACK_IMPORTED_MODULE_13___default.a, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_DialogContentText_DialogContentText__WEBPACK_IMPORTED_MODULE_14___default.a, {
+        id: "alert-dialog-description"
+      }, "This item will be deleted!")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_DialogActions_DialogActions__WEBPACK_IMPORTED_MODULE_16___default.a, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button_Button__WEBPACK_IMPORTED_MODULE_10___default.a, {
+        onClick: this.handleDeleteClose,
+        color: "primary"
+      }, "No"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button_Button__WEBPACK_IMPORTED_MODULE_10___default.a, {
+        onClick: function onClick(e) {
+          return _this2.handleDelete(e);
+        },
+        color: "primary",
+        autoFocus: true
+      }, "Yes"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Dialog_Dialog__WEBPACK_IMPORTED_MODULE_11___default.a, {
         open: this.state.openAddItem,
         onClose: this.handleAddItemClose,
         "aria-labelledby": "form-dialog-title"
@@ -71261,6 +71301,7 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TextField_TextField__WEBPACK_IMPORTED_MODULE_15___default.a, {
         margin: "dense",
         id: "date",
+        defaultValue: this.state.addDate,
         onChange: this.onAddDateInputChange,
         InputLabelProps: {
           shrink: true
@@ -71516,6 +71557,18 @@ function (_React$Component) {
       }
     });
 
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleClickOpenDelete", function () {
+      _this.setState({
+        openDelete: true
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleDeleteClose", function () {
+      _this.setState({
+        openDelete: false
+      });
+    });
+
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleClickOpenShare", function () {
       _this.setState({
         openShare: true
@@ -71545,6 +71598,7 @@ function (_React$Component) {
     _this.state = {
       openUpdate: false,
       openShare: false,
+      openDelete: false,
       response: null,
       name: _this.props.selectedTodoList.name,
       description: _this.props.selectedTodoList.description
@@ -71562,7 +71616,9 @@ function (_React$Component) {
       }).then(function (res) {
         return res.text();
       }).then(function (res) {
-        return _this2.deleteFinished(res);
+        _this2.deleteFinished(res);
+
+        _this2.handleDeleteClose();
       });
     }
   }, {
@@ -71596,10 +71652,26 @@ function (_React$Component) {
           onClick: this.handleClickOpenUpdate
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_icons_Edit__WEBPACK_IMPORTED_MODULE_14___default.a, null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_5___default.a, {
           size: "small",
+          onClick: this.handleClickOpenDelete
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_icons_Delete__WEBPACK_IMPORTED_MODULE_15___default.a, null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Dialog_Dialog__WEBPACK_IMPORTED_MODULE_12___default.a, {
+          open: this.state.openDelete,
+          onClose: this.handleDeleteClose,
+          "aria-labelledby": "alert-dialog-title",
+          "aria-describedby": "alert-dialog-description"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_DialogTitle_DialogTitle__WEBPACK_IMPORTED_MODULE_7___default.a, {
+          id: "alert-dialog-title"
+        }, "Are you sure you want to delete this list?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_DialogContent_DialogContent__WEBPACK_IMPORTED_MODULE_8___default.a, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_DialogContentText_DialogContentText__WEBPACK_IMPORTED_MODULE_9___default.a, {
+          id: "alert-dialog-description"
+        }, "This list and all associated list items will be deleted!")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_DialogActions_DialogActions__WEBPACK_IMPORTED_MODULE_11___default.a, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_5___default.a, {
+          onClick: this.handleDeleteClose,
+          color: "primary"
+        }, "No"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_5___default.a, {
           onClick: function onClick() {
             return _this3.deleteItem(_this3.props.selectedTodoList.id);
-          }
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_icons_Delete__WEBPACK_IMPORTED_MODULE_15___default.a, null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Dialog_Dialog__WEBPACK_IMPORTED_MODULE_12___default.a, {
+          },
+          color: "primary",
+          autoFocus: true
+        }, "Yes"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Dialog_Dialog__WEBPACK_IMPORTED_MODULE_12___default.a, {
           open: this.state.openUpdate,
           onClose: this.handleUpdateClose,
           "aria-labelledby": "form-dialog-title"

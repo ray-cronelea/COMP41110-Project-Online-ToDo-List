@@ -40,6 +40,7 @@ class TodoListsMainSelectedListDisplay extends React.Component {
         this.state = {
             openUpdate: false,
             openShare: false,
+            openDelete: false,
             response: null,
             name: this.props.selectedTodoList.name,
             description: this.props.selectedTodoList.description,
@@ -100,12 +101,26 @@ class TodoListsMainSelectedListDisplay extends React.Component {
         }
     }
 
+    handleClickOpenDelete = () => {
+        this.setState({
+            openDelete: true
+        });
+    };
+
+    handleDeleteClose = () => {
+        this.setState({
+            openDelete: false
+        });
+    };
+
     deleteItem(id) {
         fetch('/api/todolists/' + id, {
             method: 'DELETE',
         })
             .then(res => res.text())
-            .then(res => this.deleteFinished(res))
+            .then(res => {
+                this.deleteFinished(res);
+            })
     }
 
     deleteFinished(res){
@@ -154,8 +169,33 @@ class TodoListsMainSelectedListDisplay extends React.Component {
                     <CardActions>
                         <Button size="small" onClick={this.handleClickOpenShare}><ShareIcon/></Button>
                         <Button size="small" onClick={this.handleClickOpenUpdate}><EditIcon/></Button>
-                        <Button size="small" onClick={() => this.deleteItem(this.props.selectedTodoList.id)}><DeleteIcon/></Button>
+                        <Button size="small" onClick={this.handleClickOpenDelete}><DeleteIcon/></Button>
                     </CardActions>
+
+                    {/* DIALOG FOR DELETING LIST */}
+                    <Dialog
+                        open={this.state.openDelete}
+                        onClose={this.handleDeleteClose}
+                        aria-labelledby="alert-dialog-title"
+                        aria-describedby="alert-dialog-description"
+                    >
+                        <DialogTitle id="alert-dialog-title">{"Are you sure you want to delete this list?"}</DialogTitle>
+                        <DialogContent>
+                            <DialogContentText id="alert-dialog-description">
+                                This list and all associated list items will be deleted!
+                            </DialogContentText>
+                        </DialogContent>
+                        <DialogActions>
+                            <Button onClick={this.handleDeleteClose} color="primary">
+                                No
+                            </Button>
+                            <Button onClick={() => this.deleteItem(this.props.selectedTodoList.id)} color="primary" autoFocus>
+                                Yes
+                            </Button>
+                        </DialogActions>
+                    </Dialog>
+
+
                     {/* DIALOG FOR UPDATING LIST */}
                     <Dialog open={this.state.openUpdate} onClose={this.handleUpdateClose} aria-labelledby="form-dialog-title" >
                         <DialogTitle id="form-dialog-title">Update Todo List</DialogTitle>

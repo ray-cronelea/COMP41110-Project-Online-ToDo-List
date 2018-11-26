@@ -16,7 +16,6 @@ import TodoListsList from './todoListsList';
 import TodoListsMainContainer from './todoListsMainContainer';
 import TodoListsAddButton from './todoListsAddButton'
 import ButtonLogout from './buttonLogout';
-import Button from "@material-ui/core/Button/Button";
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from "@material-ui/core/InputBase/InputBase";
 import {fade} from "@material-ui/core/es/styles/colorManipulator";

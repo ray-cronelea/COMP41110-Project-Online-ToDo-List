@@ -18,6 +18,8 @@ import DialogActions from "@material-ui/core/DialogActions/DialogActions";
 import AddIcon from '@material-ui/icons/Add';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
+import CardActions from "@material-ui/core/CardActions/CardActions";
+import Card from "@material-ui/core/Card/Card";
 
 const styles = theme => ({
     root: {
@@ -40,6 +42,8 @@ class TodoListsMainListItems extends React.Component {
         this.state = {
             isLoaded: false,
             openAddItem: false,
+            openDelete: false,
+            rowDelete: 0,
             itemData: [],
             addName: "",
             addDescription: "",
@@ -112,12 +116,14 @@ class TodoListsMainListItems extends React.Component {
     }
 
     handleClickOpenAddItem = () => {
+
+        let todayDate = new Date().toISOString().slice(0,10);
+
         this.setState({
             openAddItem: true,
             addName: "",
             addDescription: "",
-            addDate: "",
-
+            addDate: todayDate
         });
     };
 
@@ -170,15 +176,32 @@ class TodoListsMainListItems extends React.Component {
             })
     };
 
-    handleDelete = (event, numid) => {
-        console.log("Delete: " + numid.toString());
+    handleClickOpenDelete = (rowId) => {
+        this.setState({
+            openDelete: true,
+            rowDelete: rowId
+        });
+    };
 
-        fetch("/api/todolistitems/" + numid.toString(),
+    handleDeleteClose = () => {
+        this.setState({
+            openDelete: false
+        });
+    };
+
+    handleDelete = (event) => {
+
+        console.log("Delete: " + this.state.rowDelete.toString());
+
+        fetch("/api/todolistitems/" + this.state.rowDelete.toString(),
             {
                 method: "DELETE"
             })
             .then(res => res.text())
-            .then(res => this.updateItems())
+            .then(res => {
+                this.updateItems();
+                this.handleDeleteClose();
+            })
     };
 
     onEditNameInputChange = (event) => {
@@ -270,12 +293,35 @@ class TodoListsMainListItems extends React.Component {
                                     <TableCell>{row.description}</TableCell>
                                     <TableCell>{row.date}</TableCell>
                                     <TableCell className={classes.tabbutton}><Button onClick={(e) => this.handleClickOpenEditItem(row.id,row.name,row.date,row.description)}><EditIcon/></Button></TableCell>
-                                    <TableCell className={classes.tabbutton}><Button onClick={(e) => this.handleDelete(e,row.id)}><DeleteIcon/></Button></TableCell>
+                                    <TableCell className={classes.tabbutton}><Button onClick={(e) => this.handleClickOpenDelete(row.id)}><DeleteIcon/></Button></TableCell>
                                 </TableRow>
                             );
                         })}
                     </TableBody>
                 </Table>
+
+                {/* DIALOG FOR DELETING LIST */}
+                <Dialog
+                    open={this.state.openDelete}
+                    onClose={this.handleDeleteClose}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
+                >
+                    <DialogTitle id="alert-dialog-title">{"Are you sure you want to delete this item?"}</DialogTitle>
+                    <DialogContent>
+                        <DialogContentText id="alert-dialog-description">
+                            This item will be deleted!
+                        </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={this.handleDeleteClose} color="primary">
+                            No
+                        </Button>
+                        <Button onClick={(e) => this.handleDelete(e)} color="primary" autoFocus>
+                            Yes
+                        </Button>
+                    </DialogActions>
+                </Dialog>
 
                 {/* DIALOG FOR ADDING LIST ITEM */}
                 <Dialog open={this.state.openAddItem} onClose={this.handleAddItemClose} aria-labelledby="form-dialog-title" >
@@ -309,6 +355,7 @@ class TodoListsMainListItems extends React.Component {
                         <TextField
                             margin="dense"
                             id="date"
+                            defaultValue={this.state.addDate}
                             onChange={this.onAddDateInputChange}
                             InputLabelProps={{
                                 shrink: true,
@@ -323,8 +370,6 @@ class TodoListsMainListItems extends React.Component {
                         <Button onClick={() => this.handleAddItem()} color="primary">Add</Button>
                     </DialogActions>
                 </Dialog>
-
-
 
                 {/* DIALOG FOR EDITING LIST ITEM */}
                 <Dialog open={this.state.openEditItem} onClose={this.handleEditItemClose} aria-labelledby="form-dialog-title" >
