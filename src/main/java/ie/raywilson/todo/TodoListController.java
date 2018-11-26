@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.google.common.collect.Lists;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.googlecode.objectify.ObjectifyService.ofy;
@@ -28,6 +29,28 @@ public class TodoListController {
 		Iterable<TodoList> todoLists = ofy().load().type(TodoList.class).filter("accountKeys", currentAccount);
 
 		return Lists.newArrayList(todoLists);
+	}
+
+	@GetMapping(value = "/todolists/search/{searchTerm}", produces = "application/json")
+	public List<TodoList> todoListsSearch(@PathVariable String searchTerm){
+
+		User currentUser = UserServiceFactory.getUserService().getCurrentUser();
+		Account currentAccount = ofy().load().type(Account.class).filter("userId", currentUser.getUserId()).first().now();
+		Iterable<TodoList> todoLists = ofy().load().type(TodoList.class).filter("accountKeys", currentAccount);
+
+		List<TodoList> searchTodoLists = new ArrayList<>();
+
+		searchTerm = searchTerm.toLowerCase();
+
+		for(TodoList currentTodo : todoLists){
+			String currentName = currentTodo.getName().toLowerCase();
+
+			if (currentName.startsWith(searchTerm) || currentName.endsWith(searchTerm) || currentName.contains(searchTerm)){
+				searchTodoLists.add(currentTodo);
+			}
+		}
+
+		return searchTodoLists;
 	}
 
 	@GetMapping(value = "/todolists/{id}", produces = "application/json")

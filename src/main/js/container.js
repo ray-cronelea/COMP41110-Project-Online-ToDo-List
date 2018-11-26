@@ -130,7 +130,6 @@ class ClippedDrawer extends React.Component{
 
     onSearchTermChange = (event) => {
         if (event.target.value) {
-            console.log(event.target.value);
             this.setState({searchTerm: event.target.value});
         } else {
             this.setState({searchTerm: ''});
@@ -167,11 +166,10 @@ class ClippedDrawer extends React.Component{
                                 <InputBase placeholder="Search…" value={this.props.searchTerm} onChange={this.onSearchTermChange} classes={{root: classes.inputRoot, input: classes.inputInput,}} />
                             </div>
                             <Divider />
-                            <TodoListsList selectedId={this.state.selectedId} setReload={this.setReload} reloadList={this.state.reloadList} updateCurrentTodo={this.updateCurrentTodo}></TodoListsList>
+                            <TodoListsList searchTerm={this.state.searchTerm} selectedId={this.state.selectedId} setReload={this.setReload} reloadList={this.state.reloadList} updateCurrentTodo={this.updateCurrentTodo}></TodoListsList>
                         </div>
                         <Divider />
                         <TodoListsAddButton selectedId={this.state.selectedId} setReload={this.setReload} reloadList={this.state.reloadList} updateCurrentTodo={this.updateCurrentTodo}></TodoListsAddButton>
-
                     </Drawer>
                     {/* DRAWER SECTION END */}
 

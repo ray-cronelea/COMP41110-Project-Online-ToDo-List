@@ -21,7 +21,17 @@ class TodoListsList extends React.Component {
     }
 
     updateItems(){
-        fetch("./api/todolists")
+
+        let url = './api/todolists';
+        let search = this.props.searchTerm;
+
+        if(search.length > 0){
+            url = url + "/search/" + search;
+        }
+
+        console.log("Update Items Url: " + url );
+
+        fetch(url)
             .then(res => res.json())
             .then(
                 (result) => {
@@ -32,9 +42,6 @@ class TodoListsList extends React.Component {
                         items: result
                     });
                 },
-                // Note: it's important to handle errors here
-                // instead of a catch() block so that we don't swallow
-                // exceptions from actual bugs in components.
                 (error) => {
                     this.setState({
                         isLoaded: true,
@@ -53,6 +60,10 @@ class TodoListsList extends React.Component {
         if (prevProps.reloadList !== this.props.reloadList) {
             this.updateItems();
         }
+
+        if (prevProps.searchTerm !== this.props.searchTerm) {
+            this.updateItems();
+        }
     }
 
     updateSelectedList(id){
@@ -68,11 +79,11 @@ class TodoListsList extends React.Component {
         } else {
             return (
                 <List>
-                    {items.map(item => (
+                    {items.map(item =>
                     <ListItem selected={this.props.selectedId === item.id} button key={item.id} value={item.id} onClick={() => this.updateSelectedList(item.id)}>
                         <ListItemText primary={item.name} />
                     </ListItem>
-                    ))}
+                    )}
                 </List>
             );
         }

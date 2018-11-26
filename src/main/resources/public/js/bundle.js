@@ -69971,8 +69971,6 @@ function (_React$Component) {
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onSearchTermChange", function (event) {
       if (event.target.value) {
-        console.log(event.target.value);
-
         _this.setState({
           searchTerm: event.target.value
         });
@@ -70065,6 +70063,7 @@ function (_React$Component) {
           input: classes.inputInput
         }
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Divider__WEBPACK_IMPORTED_MODULE_9___default.a, null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_todoListsList__WEBPACK_IMPORTED_MODULE_13__["default"], {
+        searchTerm: this.state.searchTerm,
         selectedId: this.state.selectedId,
         setReload: this.setReload,
         reloadList: this.state.reloadList,
@@ -70614,7 +70613,15 @@ function (_React$Component) {
     value: function updateItems() {
       var _this2 = this;
 
-      fetch("./api/todolists").then(function (res) {
+      var url = './api/todolists';
+      var search = this.props.searchTerm;
+
+      if (search.length > 0) {
+        url = url + "/search/" + search;
+      }
+
+      console.log("Update Items Url: " + url);
+      fetch(url).then(function (res) {
         return res.json();
       }).then(function (result) {
         // Examine the text in the response
@@ -70624,10 +70631,7 @@ function (_React$Component) {
           isLoaded: true,
           items: result
         });
-      }, // Note: it's important to handle errors here
-      // instead of a catch() block so that we don't swallow
-      // exceptions from actual bugs in components.
-      function (error) {
+      }, function (error) {
         _this2.setState({
           isLoaded: true,
           error: error
@@ -70644,6 +70648,10 @@ function (_React$Component) {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps, prevState) {
       if (prevProps.reloadList !== this.props.reloadList) {
+        this.updateItems();
+      }
+
+      if (prevProps.searchTerm !== this.props.searchTerm) {
         this.updateItems();
       }
     }
