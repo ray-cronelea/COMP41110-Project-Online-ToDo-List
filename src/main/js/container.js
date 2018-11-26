@@ -17,6 +17,9 @@ import TodoListsMainContainer from './todoListsMainContainer';
 import TodoListsAddButton from './todoListsAddButton'
 import ButtonLogout from './buttonLogout';
 import Button from "@material-ui/core/Button/Button";
+import SearchIcon from '@material-ui/icons/Search';
+import InputBase from "@material-ui/core/InputBase/InputBase";
+import {fade} from "@material-ui/core/es/styles/colorManipulator";
 
 const styles = theme => ({
     root: {
@@ -39,6 +42,47 @@ const styles = theme => ({
     iconSvg: {
         marginLeft: -12,
         marginRight: 20,
+    },
+    search: {
+        position: 'relative',
+        borderRadius: theme.shape.borderRadius,
+        backgroundColor: fade(theme.palette.common.black, 0.1),
+        '&:hover': {
+            backgroundColor: fade(theme.palette.common.black, 0.1),
+        },
+        marginRight: theme.spacing.unit * 2,
+        marginLeft: 0,
+        marginTop: theme.spacing.unit * 2,
+        marginBottom: theme.spacing.unit,
+        width: '100%',
+        [theme.breakpoints.up('sm')]: {
+            marginLeft: theme.spacing.unit * 3,
+            width: 'auto',
+        },
+    },
+    searchIcon: {
+        width: theme.spacing.unit * 9,
+        height: '100%',
+        position: 'absolute',
+        pointerEvents: 'none',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    inputRoot: {
+        color: 'inherit',
+        width: '100%',
+    },
+    inputInput: {
+        paddingTop: theme.spacing.unit,
+        paddingRight: theme.spacing.unit,
+        paddingBottom: theme.spacing.unit,
+        paddingLeft: theme.spacing.unit * 10,
+        transition: theme.transitions.create('width'),
+        width: '100%',
+        [theme.breakpoints.up('md')]: {
+            width: 200,
+        },
     },
     toolbar: theme.mixins.toolbar,
 });
@@ -63,6 +107,7 @@ class ClippedDrawer extends React.Component{
             error: null,
             selectedId: -1,
             reloadList: false,
+            searchTerm: ""
         };
         this.updateCurrentTodo = this.updateCurrentTodo.bind(this);
         this.setReload = this.setReload.bind(this);
@@ -82,6 +127,16 @@ class ClippedDrawer extends React.Component{
         });
     }
 
+
+    onSearchTermChange = (event) => {
+        if (event.target.value) {
+            console.log(event.target.value);
+            this.setState({searchTerm: event.target.value});
+        } else {
+            this.setState({searchTerm: ''});
+        }
+    }
+
     render() {
         const { classes } = this.props;
         return (
@@ -96,23 +151,24 @@ class ClippedDrawer extends React.Component{
                                 <path d="M21 3h-6.18C14.4 1.84 13.3 1 12 1s-2.4.84-2.82 2H3v18h18V3zm-9 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
                             </SvgIcon>
                             <Typography variant="h6" color="inherit" noWrap style={{ flex: 1 }}>COMP41110 Cloud Todo List</Typography>
-                            <div><Button variant="outlined" href="/app/search" color="inherit">Search</Button></div>
                             <div><ButtonLogout/></div>
                         </Toolbar>
                     </AppBar>
                     {/* APP BAR SECTION END */}
 
                     {/* DRAWER SECTION START */}
-                    <Drawer
-                        className={classes.drawer}
-                        variant="permanent"
-                        classes={{
-                            paper: classes.drawerPaper,
-                        }}
-                    >
+                    <Drawer className={classes.drawer} variant="permanent" classes={{paper: classes.drawerPaper,}}>
                         <div className={classes.toolbar} />
-
-                        <TodoListsList selectedId={this.state.selectedId} setReload={this.setReload} reloadList={this.state.reloadList} updateCurrentTodo={this.updateCurrentTodo}></TodoListsList>
+                        <div style={{position: "relative", overflow: "auto"}}>
+                            <div className={classes.search}>
+                                <div className={classes.searchIcon}>
+                                    <SearchIcon />
+                                </div>
+                                <InputBase placeholder="Search…" value={this.props.searchTerm} onChange={this.onSearchTermChange} classes={{root: classes.inputRoot, input: classes.inputInput,}} />
+                            </div>
+                            <Divider />
+                            <TodoListsList selectedId={this.state.selectedId} setReload={this.setReload} reloadList={this.state.reloadList} updateCurrentTodo={this.updateCurrentTodo}></TodoListsList>
+                        </div>
                         <Divider />
                         <TodoListsAddButton selectedId={this.state.selectedId} setReload={this.setReload} reloadList={this.state.reloadList} updateCurrentTodo={this.updateCurrentTodo}></TodoListsAddButton>
 

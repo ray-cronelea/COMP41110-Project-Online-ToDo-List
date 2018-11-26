@@ -4,7 +4,6 @@ import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.google.common.collect.Lists;
-import com.googlecode.objectify.Key;
 import ie.raywilson.todo.model.Account;
 import ie.raywilson.todo.model.TodoList;
 import ie.raywilson.todo.model.TodoListItem;
@@ -12,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-
 import java.util.List;
 
 import static com.googlecode.objectify.ObjectifyService.ofy;
@@ -40,7 +38,6 @@ public class ScreenController {
 		UserService userService = UserServiceFactory.getUserService();
 		String logoutURL = userService.createLogoutURL("/");
 		User currentUser = userService.getCurrentUser();
-
 		Account currentAccount = ofy().load().type(Account.class).filter("userId", currentUser.getUserId()).first().now();
 
 		if (currentAccount == null){
@@ -80,19 +77,6 @@ public class ScreenController {
 			model.addAttribute("errorMessage", "No list exists for this link!");
 			return "share-error";
 		}
-	}
-	@GetMapping("app/search")
-	public String searchPage(Model model) {
-
-		UserService userService = UserServiceFactory.getUserService();
-		String logoutURL = userService.createLogoutURL("/");
-		User currentUser = userService.getCurrentUser();
-
-		Account currentAccount = ofy().load().type(Account.class).filter("userId", currentUser.getUserId()).first().now();
-
-		model.addAttribute("userEmail", currentUser.getEmail());
-		model.addAttribute("logoutURL", logoutURL);
-		return "search";
 	}
 
 }
