@@ -4,6 +4,7 @@ import com.googlecode.objectify.Key;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 import com.googlecode.objectify.annotation.Index;
+import org.apache.commons.lang.RandomStringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,11 +20,15 @@ public class TodoList {
 	@Index List<Key<Account>> accountKeys = new ArrayList<Key<Account>>();
 
 	public TodoList(){
+		shareId = RandomStringUtils.random(10, true, true);
+		isShared = false;
 	}
 
 	public TodoList(String name, String description){
 		this.name = name;
 		this.description = description;
+		shareId = RandomStringUtils.random(10, true, true);
+		isShared = false;
 	}
 
 	public Long getId() { return id; }

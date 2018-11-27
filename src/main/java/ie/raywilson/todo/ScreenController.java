@@ -4,13 +4,18 @@ import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.google.common.collect.Lists;
+import com.googlecode.objectify.Key;
 import ie.raywilson.todo.model.Account;
+import ie.raywilson.todo.model.HelperFunctions;
 import ie.raywilson.todo.model.TodoList;
 import ie.raywilson.todo.model.TodoListItem;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import static com.googlecode.objectify.ObjectifyService.ofy;
@@ -41,10 +46,14 @@ public class ScreenController {
 		Account currentAccount = ofy().load().type(Account.class).filter("userId", currentUser.getUserId()).first().now();
 
 		if (currentAccount == null){
+
 			// No user exists, add account to storage
 			System.out.println("Creating new user account for " + currentUser.getEmail());
 			currentAccount = new Account(currentUser.getEmail(),currentUser.getUserId());
 			ofy().save().entity(currentAccount).now();
+
+			HelperFunctions.createDemoDataForNewUser(currentAccount);
+
 		} else {
 			System.out.println("Account already exists for " + currentUser.getEmail());
 		}

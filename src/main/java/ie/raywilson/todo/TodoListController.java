@@ -68,8 +68,6 @@ public class TodoListController {
 		Account currentAccount = ofy().load().type(Account.class).filter("userId", currentUser.getUserId()).first().now();
 		Key<Account> accountKey = Key.create(Account.class, currentAccount.getId());
 		todoList.addAccount(accountKey);
-		todoList.setIsShared(false);
-		todoList.setShareId(RandomStringUtils.random(10, true, true));
 		ofy().save().entity(todoList).now();
 
 		return new ResponseEntity(todoList, HttpStatus.OK);
