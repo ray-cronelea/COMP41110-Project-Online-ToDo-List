@@ -4,7 +4,6 @@ import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.google.common.collect.Lists;
-import com.googlecode.objectify.Key;
 import ie.raywilson.todo.model.Account;
 import ie.raywilson.todo.model.HelperFunctions;
 import ie.raywilson.todo.model.TodoList;
@@ -14,9 +13,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import javax.mail.Message;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import java.util.List;
+import java.util.Properties;
 
 import static com.googlecode.objectify.ObjectifyService.ofy;
 
@@ -29,9 +32,6 @@ public class ScreenController {
 
 		UserService userService = UserServiceFactory.getUserService();
 		String loginURL = userService.createLoginURL("/app");
-
-		//String jsVars =
-		//model.addAttribute("jsVars", jsVars);
 
 		model.addAttribute("loginURL", loginURL);
 		return "login";
@@ -54,8 +54,12 @@ public class ScreenController {
 
 			HelperFunctions.createDemoDataForNewUser(currentAccount);
 
+			sendMail(currentAccount.getEmail());
+
 		} else {
 			System.out.println("Account already exists for " + currentUser.getEmail());
+			currentAccount.incrementAccessCount();
+			ofy().save().entity(currentAccount);
 		}
 
 		// TODO: Return screen if first time for user to login where they can enter profile information
@@ -85,6 +89,22 @@ public class ScreenController {
 		} else {
 			model.addAttribute("errorMessage", "No list exists for this link!");
 			return "share-error";
+		}
+	}
+
+	public void sendMail(String accountCreator){
+
+		Properties props = new Properties();
+		Session session = Session.getDefaultInstance(props, null);
+		try {
+			Message msg = new MimeMessage(session);
+			msg.setFrom(new InternetAddress("admin@cloud-todo-221612.appspotmail.com", "COMP41110 Admin"));
+			msg.addRecipient(Message.RecipientType.TO, new InternetAddress("ray.wilson.cronelea@gmail.com", "Ray Wilson"));
+			msg.setSubject("Account Creation");
+			msg.setText(accountCreator + " has created an account!");
+			Transport.send(msg);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
