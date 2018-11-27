@@ -81,7 +81,7 @@ public class TodoListController {
 		updateTodoList.setName(todoList.getName());
 		ofy().save().entity(updateTodoList).now();
 
-		return new ResponseEntity(todoList, HttpStatus.OK);
+		return new ResponseEntity(updateTodoList, HttpStatus.OK);
 	}
 
 	@PostMapping(path = "/todolists/{id}/share/{status}")
