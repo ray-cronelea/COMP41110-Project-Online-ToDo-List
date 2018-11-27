@@ -70893,10 +70893,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_icons_Delete__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Delete__WEBPACK_IMPORTED_MODULE_18__);
 /* harmony import */ var _material_ui_icons_Edit__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @material-ui/icons/Edit */ "./node_modules/@material-ui/icons/Edit.js");
 /* harmony import */ var _material_ui_icons_Edit__WEBPACK_IMPORTED_MODULE_19___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Edit__WEBPACK_IMPORTED_MODULE_19__);
-/* harmony import */ var _material_ui_core_CardActions_CardActions__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @material-ui/core/CardActions/CardActions */ "./node_modules/@material-ui/core/CardActions/CardActions.js");
-/* harmony import */ var _material_ui_core_CardActions_CardActions__WEBPACK_IMPORTED_MODULE_20___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_CardActions_CardActions__WEBPACK_IMPORTED_MODULE_20__);
-/* harmony import */ var _material_ui_core_Card_Card__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @material-ui/core/Card/Card */ "./node_modules/@material-ui/core/Card/Card.js");
-/* harmony import */ var _material_ui_core_Card_Card__WEBPACK_IMPORTED_MODULE_21___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Card_Card__WEBPACK_IMPORTED_MODULE_21__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -70938,8 +70934,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-
-
 var styles = function styles(theme) {
   return {
     root: {
@@ -70953,7 +70947,11 @@ var styles = function styles(theme) {
     },
     tabbutton: {
       'width': '5%'
-    }
+    },
+    dateRowItemRed: {
+      'color': 'red'
+    },
+    dateRowItemNormal: {}
   };
 };
 
@@ -71192,7 +71190,8 @@ function (_React$Component) {
       editName: "",
       editDescription: "",
       editDate: "",
-      editId: ""
+      editId: "",
+      todayDate: ""
     };
     return _this;
   }
@@ -71200,6 +71199,10 @@ function (_React$Component) {
   _createClass(TodoListsMainListItems, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      var todayDate = new Date().toISOString().slice(0, 10);
+      this.setState({
+        todayDate: todayDate
+      });
       console.log("component did mount");
       this.updateItems();
     }
@@ -71241,7 +71244,9 @@ function (_React$Component) {
           onChange: function onChange(e) {
             _this2.handleCheckboxChange(e, row.id);
           }
-        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, null, row.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, null, row.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, null, row.date), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, {
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, null, row.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, null, row.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, {
+          className: _this2.state.todayDate === row.date ? classes.dateRowItemRed : classes.dateRowItemNormal
+        }, row.date), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, {
           className: classes.tabbutton
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button_Button__WEBPACK_IMPORTED_MODULE_10___default.a, {
           onClick: function onClick(e) {
@@ -71617,8 +71622,6 @@ function (_React$Component) {
         return res.text();
       }).then(function (res) {
         _this2.deleteFinished(res);
-
-        _this2.handleDeleteClose();
       });
     }
   }, {

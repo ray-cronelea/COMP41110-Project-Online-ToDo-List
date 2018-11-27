@@ -18,8 +18,6 @@ import DialogActions from "@material-ui/core/DialogActions/DialogActions";
 import AddIcon from '@material-ui/icons/Add';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
-import CardActions from "@material-ui/core/CardActions/CardActions";
-import Card from "@material-ui/core/Card/Card";
 
 const styles = theme => ({
     root: {
@@ -33,6 +31,11 @@ const styles = theme => ({
     },
     tabbutton: {
         'width': '5%',
+    },
+    dateRowItemRed: {
+        'color': 'red',
+    },
+    dateRowItemNormal:{
     }
 });
 
@@ -52,7 +55,8 @@ class TodoListsMainListItems extends React.Component {
             editName: "",
             editDescription: "",
             editDate: "",
-            editId: ""
+            editId: "",
+            todayDate: ""
         };
     }
 
@@ -79,6 +83,12 @@ class TodoListsMainListItems extends React.Component {
     }
 
     componentDidMount() {
+
+        let todayDate = new Date().toISOString().slice(0,10);
+        this.setState({
+            todayDate: todayDate
+        });
+
         console.log("component did mount");
         this.updateItems();
     }
@@ -291,10 +301,11 @@ class TodoListsMainListItems extends React.Component {
                                     </TableCell>
                                     <TableCell>{row.name}</TableCell>
                                     <TableCell>{row.description}</TableCell>
-                                    <TableCell>{row.date}</TableCell>
+                                    <TableCell className={(this.state.todayDate===row.date ? classes.dateRowItemRed : classes.dateRowItemNormal)}>{row.date}</TableCell>
                                     <TableCell className={classes.tabbutton}><Button onClick={(e) => this.handleClickOpenEditItem(row.id,row.name,row.date,row.description)}><EditIcon/></Button></TableCell>
                                     <TableCell className={classes.tabbutton}><Button onClick={(e) => this.handleClickOpenDelete(row.id)}><DeleteIcon/></Button></TableCell>
                                 </TableRow>
+
                             );
                         })}
                     </TableBody>
