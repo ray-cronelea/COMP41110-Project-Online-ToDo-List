@@ -62,8 +62,6 @@ public class ScreenController {
 			ofy().save().entity(currentAccount);
 		}
 
-		// TODO: Return screen if first time for user to login where they can enter profile information
-
 		model.addAttribute("userEmail", currentUser.getEmail());
 		model.addAttribute("logoutURL", logoutURL);
 		return "app";

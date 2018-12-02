@@ -17,7 +17,7 @@ public class HelperFunctions {
 		// Create a default list for this user
 		TodoList tdl = new TodoList(
 				"Application Evaluation",
-				"This list was created to help check all the operations that this todo list application is capable of performing. Please mark the items done as you complete them!");
+				"This list was created to help evaluate the operations that this todo list application is capable of performing. Please mark the items done as you complete them!");
 		tdl.addAccount(accountKey);
 		ofy().save().entity(tdl).now();
 

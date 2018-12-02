@@ -9,7 +9,7 @@ public class Account {
 
 	@Id Long id;
 	@Index String userId;
-	String email; // Can be Long, long, or String
+	String email;
 	int accessCount;
 
 	public Account(){
