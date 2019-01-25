@@ -1,5 +1,7 @@
 # COMP41110-Project-Online-ToDo-List
 
+Check this project out live! Running at: https://todo.raywilson.ie
+
 Online Todo list which allows users to perform the following operations:
 * a. Create new tasks
 * b. Edit or delete existing tasks
@@ -8,6 +10,7 @@ Online Todo list which allows users to perform the following operations:
 * e. Share tasks or the whole list
 
 # Setup of google cloud
+Install Google SDK.
 To initialise plugin:`gcloud init`
 
 To create Project:
@@ -27,12 +30,6 @@ To set active project: `gcloud config set project <projectID>`
 For example: `gcloud config set project cloud-todo-221612`
 
 To view current config: `gcloud config list`
-
-Output example:
-
-    account = ray.wilson.cronelea@gmail.com
-    disable_usage_reporting = False
-    project = cloud-todo-221612
 
 
 # To build frontend
@@ -62,3 +59,5 @@ https://github.com/GoogleCloudPlatform/getting-started-java/blob/master/appengin
 
 To use Objectify with Java Spring, and local datastore emulator:
 https://github.com/takemikami/spring-boot-objectify-sample
+
+Project originally used a self-hosted GitLab server for version control
