@@ -38,12 +38,12 @@ public class ObjectifyConfig {
 	}
 
 	@WebListener
-	public class ObjectifyListener implements ServletContextListener {
+	public static class ObjectifyListener implements ServletContextListener {
 
 		@Override
 		public void contextInitialized(ServletContextEvent sce) {
 
-			Boolean inProduction = false;
+			boolean inProduction = false;
 			// Check if in Production
 			try {
 				inProduction = SystemProperty.environment.value() == SystemProperty.Environment.Value.Production;
@@ -51,10 +51,10 @@ public class ObjectifyConfig {
 				System.out.println("Can't detect if in production. Assuming is development environment");
 			}
 
-			System.out.println("SYSTEM IS RUNNING IN PRODUCTION STATUS: " + inProduction.toString());
+			System.out.println("SYSTEM IS RUNNING IN PRODUCTION STATUS: " + inProduction);
 
 			if (inProduction){
-				ObjectifyService.init(new ObjectifyFactory());
+				ObjectifyService.init();
 			} else {
 				// Development Server
 				ObjectifyService.init(new ObjectifyFactory(
